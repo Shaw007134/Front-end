@@ -1,14 +1,70 @@
-ul {
-  list-style: none
+@font-face {
+  /* font-properties */
+  font-family: GC;
+  src: url('Font/GC.woff2');
 }
-ul li {
-  margin-left: 5px
+
+@font-face {
+  /* font-properties */
+  font-family: BAUN;
+  src: url('Font/BAUN.woff2');
 }
-a {
-  text-decoration: none
+
+body {
+  color:black;
 }
+
 .clearfix::after {
   content: '';
   display: block;
   clear: both;
 }
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.topNavBar .logo {
+  font-size: 24px;
+  font-family: GC;
+  color: #BAB8B9;
+  padding-top: 1px;
+}
+
+.topNavBar .logo .rs {
+  color: #07CB79;
+  margin-left: 4px;
+}
+
+.topNavBar .logo .card {
+  color:#565B65;
+}
+
+.topNavBar nav {
+  font-size: 13px;
+  font-family: BAUN;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.topNavBar nav ul>li {
+  margin-left: 17px;
+  margin-right: 17px;
+}
+
+.topNavBar nav ul>li>a {
+  font-weight: bold;
+  border-bottom: 3px solid transparent;
+}
+
+.topNavBar nav ul>li>a:hover{
+  border-bottom-color: #DC6465;
+}
+
+
