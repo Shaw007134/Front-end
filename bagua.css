@@ -1,0 +1,58 @@
+body {
+  background: grey;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#bagua{
+  border: solid white;
+  border-width: 1px 1px 100px 1px;
+  width: 198px;
+  height: 99px;
+  background: black;
+  border-radius: 50%;
+  margin: 100px auto 20px;
+  position: relative;
+  animation-name: spin;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+p {
+  color: white;
+  text-align: center;
+}
+
+#bagua::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  border:40px solid black;
+}
+
+#bagua::after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: black;
+  position: absolute;
+  top: 50%;
+  right: 0%;
+  border:40px solid white;
+}
+
+
