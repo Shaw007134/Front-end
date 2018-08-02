@@ -15,16 +15,30 @@
   margin: 0;
 }
 
+/* img {
+  padding: 0;
+  margin:0;
+} */
+
+body{
+  background: #EFEFEF;
+  padding: 0;
+  margin: 0;
+}
 .clearfix::after {
   content: '';
   display: block;
   clear: both;
 }
 
-ul {
+ul,ol{
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-weight: normal;
 }
 
 a {
@@ -53,7 +67,7 @@ hr {
 .topNavBar .logo {
   font-size: 24px;
   font-family: GC;
-  padding-top: 1px;
+  padding-top: 6px;
 }
 
 .topNavBar .logo .rs {
@@ -73,15 +87,17 @@ hr {
 .topNavBar nav ul>li {
   margin-left: 17px;
   margin-right: 17px;
-  float: right;
+  float: left;
 }
 
 .topNavBar nav ul>li>a {
   font-size: 13px;
   font-family: BAUN;
   color: #939092;
-  font-weight: bolder;
+  font-weight: bold;
+  padding: 4px;
   border-bottom: 3px solid transparent;
+  display: block;
 }
 
 .topNavBar nav ul>li>a:hover{
@@ -97,15 +113,17 @@ hr {
 
 .banner .mask {
   height: 515px;
-  background-color: rgb(0,0,0,0.7);
+  background-color: rgb(42, 49, 61,0.7);
 }
 
 .userCard {
-  border: 1px solid #07CB79;
+  /* border: 1px solid #07CB79; */
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
   background-color: #fff;
+  border-radius: 1px;
+  box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.35);
 }
 
 .userCard .welcome {
@@ -199,3 +217,179 @@ hr {
   fill: white;
   vertical-align: top;
 } 
+
+body main {
+  margin-top: -340px;
+} 
+
+.downloadResume-wrapper{
+  text-align: center;
+}
+
+.downloadResume {
+  font-size: 14px;
+  line-height: 16px;
+  padding: 21px 55px;
+  border: 1px solid #CDCFD1;
+  background: #efefef;
+  display: inline-block;
+  border-radius: 2px;
+  color: #3d4451;
+  font-weight: bold;
+  margin: 32px 0;
+  transition: box-shadow 0.2s;
+}
+
+.downloadResume:hover {
+  box-shadow: 0px 4px 13px 0px rgba(0,0,0,0.35);
+}
+
+.selfIntroduction {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+section.skills,
+section.portfolio {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 58px;
+}
+
+section.skills h2,
+section.portfolio h2 {
+  color: #3d4451;
+  font-size: 34px;
+  line-height: 1.2;
+  font-weight: bold;
+  text-align: center;
+}
+
+section.skills h3 {
+  font-size: 14px;
+  line-height: 1.1;
+  padding-right: 40px;
+}
+
+section.skills>ol {
+  background: #fff;
+  border-radius: 1px;
+  box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.35);
+  padding: 42px 50px 10px;
+  margin-top: 30px;
+}
+
+section.skills>ol>li {
+  float: left;
+  width: 48%;
+  box-sizing: border-box;
+  /* margin-right: 5%;
+  margin-left: 5%; */
+}
+
+section.skills>ol>li:nth-child(even) {
+  float: right;
+}
+
+section.skills .progressBar {
+  height: 5px;
+  background: #CDF5E4;
+  margin: 4px 0 40px;
+  border-radius: 2px;
+}
+
+section.skills .progressBar .progress {
+  height: 100%;
+  background: #07CB79;
+  width: 50%;
+  border-radius: 2px;
+}
+
+section.portfolio {
+  text-align: center;
+} 
+
+section.portfolio nav {
+  text-align: center;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 32px;
+}
+section.portfolio nav ol {
+  display: inline-block;
+  vertical-align: top;
+}
+
+section.portfolio nav ol li {
+  float: left;
+  margin-left: 40px;
+  cursor: pointer;
+}
+
+section.portfolio nav ol li:first-child{
+  margin-left: 0;
+}
+
+section.portfolio nav .bar {
+  height: 5px;
+  background:white;
+  border-radius: 2px;
+  margin-top: 5px;
+  margin-bottom: 30px;
+}
+
+section.portfolio nav .bar .bar-inner {
+  height: 100%;
+  background: #07CB79;
+  border-radius: 2px;
+  transition: all 0.1s;
+}
+
+section.portfolio nav .bar.state1 .bar-inner {
+  margin-left: 0px;
+  width: 30px;
+}
+
+section.portfolio nav .bar.state2 .bar-inner {
+  margin-left: 72px;
+  width: 32px;
+}
+
+section.portfolio nav .bar.state3 .bar-inner {
+  margin-left: 144px;
+  width: 95px;
+}
+
+section.portfolio .works {
+  position: relative;
+  margin-bottom: 100px;
+}
+
+.big {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 1px;
+  box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.35);
+}
+
+.small_1 {
+  position: absolute;
+  top: 0;
+  left: 625px;
+  border-radius: 1px;
+  box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.35);
+}
+
+.small_2 {
+  position: absolute;
+  top: 319px;
+  left: 625px;
+  border-radius: 1px;
+  box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.35);
+}

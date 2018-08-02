@@ -20,26 +20,26 @@
 <body>
   <div class="topNavBar">
     <div class="topNavBar-inner clearfix">
-    <a class="logo" href="#" style="float: left">
-      <span class="rs">RS</span><span class="card"> card</span>
-    </a>
-    <nav style="float: right">
-      <ul class="clearfix">
-        <li><a href="#">ABOUT</a></li>
-        <li><a href="#">SKILLS</a></li>
-        <li><a href="#">EXPERIENCE</a></li>
-        <li><a href="#">BLOG</a></li>
-        <li><a href="#">CONTACT</a></li>
-        <li><a href="#">OTHER</a></li>
-        <li><a href="#">ALL DEMOS</a></li>
-      </ul>
-    </nav>
-  </div>
+      <a class="logo" href="#" style="float: left">
+        <span class="rs">RS</span><span class="card"> card</span>
+      </a>
+      <nav style="float: right">
+        <ul class="clearfix">
+          <li><a href="#">ABOUT</a></li>
+          <li><a href="#">SKILLS</a></li>
+          <li><a href="#">EXPERIENCE</a></li>
+          <li><a href="#">BLOG</a></li>
+          <li><a href="#">CONTACT</a></li>
+          <li><a href="#">OTHER</a></li>
+          <li><a href="#">ALL DEMOS</a></li>
+        </ul>
+      </nav>
+    </div>
   </div>
   <div class="banner">
     <div class="mask"></div>
   </div>
-  <main>
+  <main style="margin-top: -340px">
     <div class="userCard">
       <div class="pictureAndText clearfix">
           <div class="picture">
@@ -84,41 +84,108 @@
       </footer>
     </div>
   </main>
+  <p class="downloadResume-wrapper">
+    <a href="./Resume.pdf" target="_blank" class="downloadResume" download>下载PDF简历</a>
+  </p>
+  <p class="selfIntroduction">
+    Shaw, 前端工程师
+  <br>
+    技能：前端开发，HTML,CSS,Javascript，Vue,React等
+  </p>
   
-    <a href="#" class="button">下载PDF简历</a>
-    <p>
-      Shaw, 前端工程师
-      技能：前端开发，掌握HTML,CSS,Javascript，Vue,React等
-    </p>
-  
-  <section>
+  <section class="skills">
     <h2>技能</h2>
-    <ol>
-      <li>HTML 5 &amp; CSS 3</li>
-      <li>Javascript</li>
-      <li>jQuery</li>
-      <li>Vue</li>
-      <li>React</li>
-      <li>HTTP</li>
+    <ol class="clearfix">
+      <li>
+        <h3>
+          HTML 5 &amp; CSS 3
+        </h3>
+        <div class="progressBar">
+          <div class="progress" style="width:30%"></div>
+        </div>
+      </li>
+      <li>
+        <h3>
+          Javascript
+        </h3>
+        <div class="progressBar">
+          <div class="progress" style="width:60%"></div>
+        </div>
+      </li>
+      <li>
+        <h3>
+          HTTP &amp; Vue &amp; React
+        </h3>
+        <div class="progressBar">
+          <div class="progress" style="width:40%"></div>
+        </div>
+      </li>
+      <li>
+        <h3>
+          jQuery &amp; Node.js
+        </h3>
+        <div class="progressBar">
+          <div class="progress" style="width:50%"></div>
+        </div>
+      </li>
+      <li>
+        <h3>
+          Python
+        </h3>
+        <div class="progressBar">
+          <div class="progress" style="width:70%"></div>
+        </div>
+      </li>
+      <li>
+        <h3>
+          SQL
+        </h3>
+        <div class="progressBar">
+          <div class="progress" style="width:80%"></div>
+        </div>
+      </li>
     </ol>
   </section>
 
-  <section>
+  <section class="portfolio">
     <h2>作品集</h2>
     <nav>
-      <ol>
-        <li>所有</li>
-        <li>框架</li>
-        <li>原生JS&amp; CSS</li>
+      <ol class="clearfix">
+        <li id="portfolioAll">所有</li>
+        <li id="portfolioFramework">框架</li>
+        <li id="portfolioValina">原生JS&amp; CSS</li>
       </ol>
+      <div id="portfolioBar" class="bar state1">
+        <div class="bar-inner"></div>
+      </div>      
     </nav>
 
-    <div class="jobs">
-      <div class="big"></div>
-      <div class="small"></div>
-      <div class="small"></div>
+    <script>
+      portfolioAll.onclick = function(){
+        portfolioBar.className = "bar state1"
+      }
+      portfolioFramework.onclick = function(){
+        portfolioBar.className = "bar state2"
+      }
+      portfolioValina.onclick = function(){
+        portfolioBar.className = "bar state3"
+      }  
+    </script>
+
+
+    <div class="works clearfix" style="height: 610px;">
+      <div class="big">
+        <img src="./Img/portfolio-thumb-05-610x600.jpg" alt="作品1">
+      </div>
+      <div class="small_1">
+        <img src="./Img/portfolio-thumb-11-289x281.jpg" alt="作品2">
+      </div>
+      <div class="small_2">
+        <img src="./Img/portfolio-thumb-08-289x281.jpg" alt="作品3">
+      </div>
     </div>
+    
   </section>
 
-</body>
+ </body>
 </html>
