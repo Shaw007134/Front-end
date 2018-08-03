@@ -97,6 +97,7 @@ hr {
   font-weight: bold;
   padding: 4px;
   border-bottom: 3px solid transparent;
+  border-radius: 2px;
   display: block;
 }
 
