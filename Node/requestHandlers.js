@@ -2,7 +2,13 @@ var exec = require("child_process").exec;
 
 function start(response) {
   console.log("Request handler 'start' was called");
-  var content = "empty";
+  var content = '<html>'+'<head>'+
+                '<meta http-equiv="Content-Type" content="text/html;"+
+                'charset=UTF-8"/>'+
+                '</head>'+
+                '<body>'+
+                '<form action="/upload" method="post">'+
+                ;
 
   exec("dir",function(error,stdout,stderr){
     response.writeHead(200,{"Content-Type":"text/plain"});
