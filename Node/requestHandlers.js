@@ -68,7 +68,7 @@ function show(response){
     }else{
       response.writeHead(200,{"Content-Type":"image/png"});
       response.write(file,"binary");
-      response.end();
+      response.end(); 
     }
   });
 }
