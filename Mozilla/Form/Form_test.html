@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <form>
+        <fieldset>
+          <legend>Fruit juice size</legend>
+          <!-- <p> -->
+            <input type="radio" name="size" id="size_1" value="small">
+            <label for="size_1">Small</label>
+          </p>
+          <p>
+            <input type="radio" name="size" id="size_2" value="medium">
+            <label for="size_2">Medium</label>
+          </p>
+          <p>
+            <input type="radio" name="size" id="size_3" value="large">
+            <label for="size_3">Large</label>
+          </p>
+        </fieldset>
+      </form>
+
+      <form>
+        <p>
+          <label for="taste_1">I like cherry</label>
+          <input type="checkbox" id="taste_1" name="taste_cherry" value="1">
+        </p>
+        <p>
+          <label for="taste_2">I like banana</label>
+          <input type="checkbox" id="taste_2" name="taste_banana" value="2">
+        </p>
+      </form>
+
+      <p>Required fields are followed by <abbr title="required">*</abbr>.</p>
+    <form>
+    <!-- So this: -->
+    <div>
+      <label for="username">Name:</label>
+      <input type="text" name="username">
+      <label for="username"><abbr title="required">*</abbr></label>
+    </div>
+
+    <!-- would be better done like this: -->
+    <div>
+      <label for="username">
+        <span>Name:</span>
+        <input id="username" type="text" name="username">
+        <abbr title="required">*</abbr>
+      </label>
+    </div>
+
+    <!-- But this is probably best: -->
+    <div>
+      <label for="username">Name: <abbr title="required">*</abbr></label>
+      <input id="username" type="text" name="username">
+    </div>
+  </form>
+
+  <form>
+    <select id="simple" name="simple">
+      <option>Banana</option>
+      <option>Cherry</option>
+      <option>Lemon</option>
+    </select>
+
+    <select id="groups" name="groups">
+      <optgroup label="fruits">
+        <option>Banana</option>
+        <option selected>Cherry</option>
+        <option>Lemon</option>
+      </optgroup>
+      <optgroup label="vegetables">
+        <option>Carrot</option>
+        <option>Eggplant</option>
+        <option>Potato</option>
+      </optgroup>
+    </select>
+
+    <select multiple id="multi" name="multi">
+      <option>Banana</option>
+      <option>Cherry</option>
+      <option>Lemon</option>
+    </select>
+
+
+    <label for="myFruit">What's your favorite fruit?</label>
+    <input type="text" name="myFruit" id="myFruit" list="mySuggestion">
+    <datalist id="mySuggestion">
+      <option>Apple</option>
+      <option>Banana</option>
+      <option>Blackberry</option>
+      <option>Blueberry</option>
+      <option>Lemon</option>
+      <option>Lychee</option>
+      <option>Peach</option>
+      <option>Pear</option>
+    </datalist>
+
+    <input type="checkbox" checked id="carrots" name="carrots" value="carrots">
+  </form>
+
+  <form>
+  <fieldset>
+    <legend>What is your favorite meal?</legend>
+    <ul>
+      <li>
+        <label for="soup">Soup</label>
+        <input type="radio" checked id="soup" name="meal" value="soup">
+      </li>
+      <li>
+        <label for="curry">Curry</label>
+        <input type="radio" id="curry" name="meal" value="curry">
+      </li>
+      <li>
+        <label for="pizza">Pizza</label>
+        <input type="radio" id="pizza" name="meal" value="pizza">
+      </li>
+    </ul>
+  </fieldset>
+</form>
+
+  <form>
+    <button type="submit">
+      This a <br><strong>submit button</strong>
+    </button>
+  
+    <input type="submit" value="This is a submit button">
+
+    <input type="number" name="age" id="age" min="1" max="10" step="2">
+
+    <input type="range" name="beans" id="beans" min="0" max="500" step="10">
+
+    <input type="file" name="file" id="file" accept="image/*" multiple>
+
+    <input type="datetime-local" name="datetime" id="datetime">
+
+    <input type="month" name="month" id="month">
+
+    <input type="time" name="time" id="time">
+
+    <input type="week" name="week" id="week">
+
+    <label for="myDate">When are you available this summer?</label>
+    <input type="date" name="myDate" min="2013-06-01" max="2013-08-31" id="myDate">
+
+    <input type="color" name="color" id="color">
+
+    <input type="hidden" id="timestamp" name="timestamp" value="1286705410">
+
+    <progress max="100" value="75">75/100</progress>
+
+    <meter min="0" max="100" value="75" low="33" high="66" optimum="50">75</meter>
+  </form>
+
+</body>
+</html>

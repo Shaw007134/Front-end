@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Custom widgets</title>
+  <link href="custom_widgets.css" rel="stylesheet" type="text/css">
+</head>
+<body class="no-widget">
+  <form>
+    <select name="myFruit" id="">
+      <option value="">Cherry</option>
+      <option value="">Lemon</option>
+      <option value="">Banana</option>
+      <option value="">Strawberry</option>
+      <option value="">Apple</option>
+    </select>
+    <div class="select" tabindex="0">
+      <span class="value">Cherry</span>
+      <ul class="optList hidden">
+        <li class="option highlight">Cherry</li>
+        <li class="option">Lemon</li>
+        <li class="option">Banana</li>
+        <li class="option">Strawberry</li>
+        <li class="option">Apple</li>
+      </ul>
+    </div>
+  </form>
+  <script src="custom_widgets.js"></script>
+</body>
+</html>
