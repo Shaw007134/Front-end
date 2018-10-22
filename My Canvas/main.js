@@ -24,7 +24,7 @@ brush.onclick = function() {
   // actions.className = 'actions'
 }
 
-clear.onclick = function(){
+clear_canvas.onclick = function(){
   context.clearRect(0,0,yyy.width,yyy.height)
 }
 
