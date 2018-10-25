@@ -68,7 +68,7 @@ main{
   height: 40px;
   background: linear-gradient(to buttom,#292929 0%,#111111 100%);
   border: 1px solid #373737; 
-  color: red;
+  color: white;
   border-radius: 6px;
   box-shadow: 0 0 0 1px #1A1B1C, 0 0 0 2px #1F2020, 0 3px 0 2px #080808;
   position: relative;
