@@ -107,7 +107,7 @@ hr {
   font-family: BAUN;
   color: inherit;
   font-weight: bold;
-  padding: 4px;
+  padding-bottom: 8px;
   border-bottom: 3px solid transparent;
   border-radius: 3px;
   display: block;
@@ -120,6 +120,7 @@ hr {
   position: absolute;
   top: 100%; left: 0; width: 100%;
   background: #07CB79;
+  border-radius: 1px;
   height: 3px;
   animation: menuSlide .3s;
 }
