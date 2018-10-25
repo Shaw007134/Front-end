@@ -33,8 +33,6 @@ body{
 
 ul,ol{
   list-style: none;
-  padding: 0;
-  margin: 0;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -110,8 +108,10 @@ hr {
 }
 
 .topNavBar nav ul>li.active>a::after{
-  content: '';position: absolute;
-  display: block; top: 100%; left: 0; width: 100%;
+  content: '';
+  display: block; 
+  position: absolute;
+  top: 100%; left: 0; width: 100%;
   background: #07CB79;
   height: 3px;
   animation: menuSlide .3s;
