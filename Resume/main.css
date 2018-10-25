@@ -106,11 +106,12 @@ hr {
   border-bottom: 3px solid transparent;
   border-radius: 3px;
   display: block;
+  position: relative;
 }
 
 .topNavBar nav ul>li.active>a::after{
-  content: '';
-  display: absolute; top: 100%; left: 0; width: 100%;
+  content: '';position: absolute;
+  display: block; top: 100%; left: 0; width: 100%;
   background: #07CB79;
   height: 3px;
   animation: menuSlide .3s;
