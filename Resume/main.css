@@ -85,14 +85,21 @@ hr {
 }
 
 .topNavBar nav {
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 5px;
+  /* padding-bottom: 8px; */
+}
+
+.topNavBar nav > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .topNavBar nav ul>li {
   margin-left: 17px;
   margin-right: 17px;
   float: left;
+  position: relative;
 }
 
 .topNavBar nav ul>li>a {
