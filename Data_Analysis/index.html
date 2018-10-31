@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Job Analysis</title>
+  <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="head">
+        <h1 class="title">The Job of Data Analysis in 2018</h1>
+    
+        <p class="source">Source: <a href="https://www.zhipin.com/">zhipin.com</a>, one of the most popular internet recruiting website.</p>
+      </div>
+
+      
+    </header>
+      
+    <main class="main">
+      <section class="general">
+        <h2>The Salary of Data Analysts</h2>
+        <p>Generally speaking, the salary of data analysts is just like other IT positions, such as software engineers.</p>
+        <p>There is an ever-increasing demand for data analysts in top-lier cities, such as Shenzhen, Guangzhou, Shanghai, Beijing </p>
+        <p>Requirements focus on having at least one year experience, holding a bachelor degree or higher.</p>
+        <p>The average salary is around 10,000 yuan per month.The payroll is 15,000 yuan per month.</p>
+      </section>
+
+      <section class="chart-item">
+        <!-- <p class="para-title">The distribution of salary</p> -->
+        <div class="chart">
+          <embed src="./salary1.svg" class="chartWrap" />
+        </div>
+      </section>
+
+
+      <section class="general">
+          <h2>Educational Background of Data Analysts</h2>
+          <p>Mostly, the educational qualifications usually require at least a computer-related or statistically relevant bachelor's degree</p>
+          <p>Higher education, the greater the salary gap. The salary-mid for a master is higher the salary-high of a bachelor.</p>
+          <p>There are 70% posts requests at least bachelor degree</p>
+        </section>
+        <section class="chart-item">
+          <div class="chart">
+            <embed src="./edu_salary1.svg" class="chartWrap" />
+          </div>
+          <div class="two-picture">
+            <embed src="./education_pie1.svg"/>
+            <embed src="./Education requirement1.svg"/>
+          </div>
+        </section>
+
+
+        <section class="general">
+            <h2>Work Experience of Data Analysts</h2>
+            <p>In the job market, most companies are seeking for candidates that have at least 1-3 years work experience.</p>
+            <p>41% posts request at least 1-3years work experience and 32% posts request at least 3-5years work experience</p>
+            <p>The salary-high for experienced data analysts can touch more than 30,000 yuan per month.</p>
+          </section>
+          <section class="chart-item">
+            <div class="chart">
+                <embed src="./exp_salary1.svg" class="chartWrap" />
+            </div>
+            <div class="chart">
+              <embed src="./experience_pie1.svg" class="chartWrap" />
+          </div>
+          </section>
+
+
+          <section class="general">
+              <h2>Job Descriptions of Data Analysts</h2>
+              <p>In a nutshell, the communication skills, data mining skills are most frequently mentioned.</p>
+              <p>As for the technical skills, SQL, Python, R, Hadoop, SAS, SPSS, BI, EXCEL, Spark, Hive top the lists of requirements</p>
+              <p>From the word cloud, we can see that the candidates should be sensitive to data, seek valuable insights into the information.</p>
+          </section>
+          <section class="chart-item">
+            <div class="img-chart">
+                <img src="./Word-Cloud-Freq1.png" class="word_cloud"/>
+            </div>
+          </section>
+
+
+          <section class="general general1">
+            <h2>Tools &amp; Prospect</h2>
+            <p>To sum up, the tools used in the data collection process and data analysis are as follows.</p>
+            <ul class="list">
+              <li><b>Data Collection</b>: Python(requests + xpath)</li>
+              <li><b>Data Storage</b>: MySQL</li>
+              <li><b>Data Analysis</b>: Pandas, matplotlib, numpy, scipy</li>
+              <li><b>Data Visualization</b>: WordCloud, jieba</li>
+            </ul> 
+
+            <p>Difficulites encounted and solutions</p>
+            <ul class="list">
+              <li><b>Anti-spider-Forbidden IP</b>: Using dynamic IP from IP pools maintained by a server</li>
+              <li><b>Anti-spider-Too frequent access</b>: Controll the request frequencies, using sleep function</li>
+              <li><b>Anti-spider-Verify code</b>: Proactively initiate a request to the captcha page</li>
+            </ul> 
+
+            <p>Furture plans</p>
+            <ul class="list list1">
+              <li><b>Selenium</b>: Try selenium, web driver</li>
+              <li><b>Redis</b>: Try redis distributed spider</li>
+              <li><b>Scrapy, MAP API integrate:</b> Read the documentation of Scrapy</li>
+              <li><b>Node.js Mongoose, Echart</b>: Use the node.js, mongoose,Echart to similar work</li>
+              <li><b>Collecting data</b>: Collecting data from different cities, different jobs, different websites</li>
+
+            </ul> 
+          </section>
+    </main>
+
+    <footer class="footer">
+      <div class="author">
+        <p>Made by Shaw Zhang</p>
+    </div>
+    </footer>
+  </div>
+</body>
+</html>
