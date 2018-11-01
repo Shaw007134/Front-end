@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Shaw的个人简历</title>
+  <title>Shengyi's Resume</title>
   <link rel="stylesheet" href="./main.css">
   <script src="//at.alicdn.com/t/font_773977_69a3vgvy7o4.js"></script>
   <style type="text/css">
@@ -64,7 +64,7 @@
               <li>博客3</li>
             </ul> -->
           </li>
-          <li><a href="#">CONTACT</a></li>
+          <li><a href="#contact">CONTACT</a></li>
           <!-- <li><a href="#">OTHER</a></li>
           <li><a href="#">ALL DEMOS</a></li> -->
         </ul>
@@ -138,7 +138,7 @@
             Python
           </h3>
           <div class="progressBar">
-            <div class="progress" style="width:70%"></div>
+            <div class="progress" style="width:80%"></div>
           </div>
         </li>
         <li>
@@ -215,8 +215,34 @@
         </a>
       </div>
     </div>
+  </section>
 
-    
+  <section data-x id="contact" class="contact">
+      <h2>Contact me</h2>
+      <div class="container">
+          <form action="action_page.php">
+        
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="firstname" placeholder="Your name..">
+        
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+        
+            <label for="Email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Please enter your email..">
+            <!-- <select id="country" name="country">
+              <option value="australia">Australia</option>
+              <option value="canada">Canada</option>
+              <option value="usa">USA</option>
+            </select> -->
+        
+            <label for="subject">Subject</label>
+            <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+        
+            <input type="submit" value="Submit">
+        
+          </form>
+        </div>
   </section>
 
   <script>
@@ -230,7 +256,6 @@
         portfolioBar.className = "bar state3"
       }  
     </script>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="./main.js"></script>
