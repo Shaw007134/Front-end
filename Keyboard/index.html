@@ -49,7 +49,7 @@
         var button2 = e['target']
         var img2 = button2.previousSibling
         var key = button2['id']
-        var x = prompt('Input a URL')
+        var x = prompt('Please enter a URL')
         hash[key] = x
         img2.src = 'http://' + x + '/favicon.ico'
         img2.onerror = function(x){
