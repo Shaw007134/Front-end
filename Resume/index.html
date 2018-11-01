@@ -51,9 +51,9 @@
           <li>
             <a href="#siteWorks">Works</a>
             <ul class="submenu">
-              <li>Work1</li>
-              <li>Work2</li>
-              <li>Work3</li>
+              <li class="hvr-back-pulse"><a href="http://syizhang.com/Front-end/Keyboard/" target="_blank">Navigation keyboard</a></li>
+              <li class="hvr-back-pulse"><a id="canvas" href="http://syizhang.com/Front-end/Canvas/" target="_blank">Mobile Canvas</a></li>
+              <li class="hvr-back-pulse"><a id="python" href="http://syizhang.com/Front-end/Data_Analysis/" target="_blank">Python related</a></li>
             </ul>
           </li>
           <li>
@@ -65,8 +65,8 @@
             </ul> -->
           </li>
           <li><a href="#">CONTACT</a></li>
-          <li><a href="#">OTHER</a></li>
-          <li><a href="#">ALL DEMOS</a></li>
+          <!-- <li><a href="#">OTHER</a></li>
+          <li><a href="#">ALL DEMOS</a></li> -->
         </ul>
       </nav>
     </div>
@@ -197,8 +197,25 @@
         <div class="bar-inner"></div>
       </div>      
     </nav>
+    
+    <div class="works clearfix" style="height: 610px;">
+      <div class="big" id="big">
+        <a href="http://syizhang.com/Front-end/Keyboard/">
+          <img src="./Img/portfolio-thumb-05-610x6001.jpg" border="0" alt="作品1">
+        </a>
+      </div>
+      <div class="small_1" id="small_1">
+        <img src="./Img/portfolio-thumb-11-289x2811.jpg" alt="作品2">
+      </div>
+      <div class="small_2" id="small_2">
+        <img src="./Img/portfolio-thumb-08-289x281.svg" width='289px' height='281px' alt="作品3">
+      </div>
+    </div>
 
-    <script>
+    
+  </section>
+
+  <script>
       portfolioAll.onclick = function(){
         portfolioBar.className = "bar state1"
       }
@@ -210,21 +227,9 @@
       }  
     </script>
 
-    
-    <div class="works clearfix" style="height: 610px;">
-      <div class="big">
-        <img src="./Img/portfolio-thumb-05-610x600.jpg" alt="作品1">
-      </div>
-      <div class="small_1">
-        <img src="./Img/portfolio-thumb-11-289x281.jpg" alt="作品2">
-      </div>
-      <div class="small_2">
-        <img src="./Img/portfolio-thumb-08-289x281.jpg" alt="作品3">
-      </div>
-    </div>
-    
-  </section>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="./main.js"></script>
 
   <script>
     
@@ -256,9 +261,9 @@
       
       specialTags[minIndex].classList.remove('offset')
       let id = specialTags[minIndex].id
-      console.log(id)
+      // console.log(id)
       let a = document.querySelector('a[href="#' + id + '"]')
-      console.log(a)
+      // console.log(a)
       let li = a.parentNode
       let allchild = li.parentNode.children
       for(let i=0; i<allchild.length; i++){
@@ -277,31 +282,33 @@
       }
     }
 
-    let aTags = document.querySelectorAll('nav.menu > ul > li >a')
+    
     function animate(time) {
     requestAnimationFrame(animate);
     TWEEN.update(time);
     }
     requestAnimationFrame(animate);
 
-    
+    let aTags = document.querySelectorAll('nav.menu > ul > li >a')
     for(let i=0; i<aTags.length; i++){
-      aTags[i].onclick = function(x){
-        x.preventDefault()
-        let top = document.querySelector(x.currentTarget.getAttribute('href')).offsetTop
-        var coords = { y: window.scrollY}; 
-        let targetTop = top - 80
-        let s = targetTop - coords.y
-        let t1 = Math.abs((s/100)*300)
-        let t = t1 > 500 ? 500 : t1
-        var tween = new TWEEN.Tween(coords) 
-                .to({ y: targetTop}, t) 
-                .easing(TWEEN.Easing.Quadratic.Out) 
-                .onUpdate(function() { 
-                  window.scrollTo(0,coords.y) 
-                })
-                .start();
-     }
+      if(aTags[i].getAttribute('href').startsWith('#')){
+        aTags[i].onclick = function(x){
+          x.preventDefault()
+          let top = document.querySelector(x.currentTarget.getAttribute('href')).offsetTop
+          var coords = { y: window.scrollY}; 
+          let targetTop = top - 80
+          let s = targetTop - coords.y
+          let t1 = Math.abs((s/100)*300)
+          let t = t1 > 500 ? 500 : t1
+          var tween = new TWEEN.Tween(coords) 
+                  .to({ y: targetTop}, t) 
+                  .easing(TWEEN.Easing.Quadratic.Out) 
+                  .onUpdate(function() { 
+                    window.scrollTo(0,coords.y) 
+                  })
+                  .start();
+       }
+      }
    }
   </script>
 

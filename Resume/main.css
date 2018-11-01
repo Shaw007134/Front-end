@@ -171,7 +171,70 @@ hr {
 
 .topNavBar .submenu > li{
   white-space: nowrap;
-  padding: 5px 10px;
+  /* border: 1px solid red; */
+  /* background: #565B65; */
+  padding: 4px 8px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.topNavBar .submenu > li>a{
+  /* border: 1px solid green; */
+  text-align: center;
+  padding: 0px 8px;
+}
+
+.topNavBar .submenu > li:first-child{
+  padding-top: 10px;
+}
+
+.topNavBar .submenu > li:nth-child(2){
+  margin-bottom: 0px;
+}
+
+.topNavBar .submenu > li:last-child{
+  margin-bottom: 2px;
+  margin-top: 0px;
+}
+
+@-webkit-keyframes hvr-back-pulse {
+  50% {
+    background-color:#EBECEE;
+  }
+}
+@keyframes hvr-back-pulse {
+  50% {
+    background-color:#EBECEE;
+  }
+}
+.hvr-back-pulse {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  overflow: hidden;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-property: color, background-color;
+  transition-property: color, background-color;
+}
+.hvr-back-pulse:hover, .hvr-back-pulse:focus, .hvr-back-pulse:active {
+  -webkit-animation-name: hvr-back-pulse;
+  animation-name: hvr-back-pulse;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  background-color: #EBECEE;
+  background-color: #EBECEE;
+  /* color: white; */
+  width:151.25px;
+  transition: ease-in-out 0.5s;
 }
 
 .banner {
@@ -425,21 +488,25 @@ section.portfolio nav .bar .bar-inner {
   background: #07CB79;
   border-radius: 2px;
   transition: all 0.1s;
+
 }
 
 section.portfolio nav .bar.state1 .bar-inner {
   margin-left: 0px;
-  width: 30px;
+  width: 22px;
+  transition: all .3s;
 }
 
 section.portfolio nav .bar.state2 .bar-inner {
   margin-left: 60px;
   width: 74px;
+  transition: all .3s;
 }
 
 section.portfolio nav .bar.state3 .bar-inner {
   margin-left: 174px;
   width: 54px;
+  transition: all .3s;
 }
 
 section.portfolio .works {
@@ -453,6 +520,7 @@ section.portfolio .works {
   left: 0;
   border-radius: 1px;
   box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.35);
+  transition: all .5s;
 }
 
 .small_1 {
@@ -461,12 +529,53 @@ section.portfolio .works {
   left: 625px;
   border-radius: 1px;
   box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.35);
+  transition: all .5s;
 }
 
 .small_2 {
   position: absolute;
-  top: 319px;
+  top: 317px;
   left: 625px;
   border-radius: 1px;
   box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.35);
+  transition: all .5s;
 }
+
+.hidden {
+  opacity: 0;
+  /* height: 0; */
+  overflow: hidden;
+  transition: all .5s;
+}
+
+.move_small_2 {
+  animation: move .8s;
+}
+
+@keyframes move{
+  /* 0%{
+    top: 319px;
+    left: 625px;
+  } */
+  100%{
+    top: 10px;
+    left: 330px;
+  }
+}
+
+.small_2_change {
+  position: absolute;
+  top: 10px;
+  left: 330px;
+  border-radius: 1px;
+  box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.35);
+  transition: all .5s;
+}
+
+.height_0 {
+  max-height: 0;
+}
+
+
+
+

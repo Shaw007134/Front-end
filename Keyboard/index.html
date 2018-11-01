@@ -43,13 +43,13 @@
 
     function createButton(id){
       var button = tag('button')
-      button.textContent = '编辑'
+      button.textContent = 'Edit'
       button.id = id
       button.onclick = function(e){
         var button2 = e['target']
         var img2 = button2.previousSibling
         var key = button2['id']
-        var x = prompt('输入一个网址')
+        var x = prompt('Input a URL')
         hash[key] = x
         img2.src = 'http://' + x + '/favicon.ico'
         img2.onerror = function(x){
