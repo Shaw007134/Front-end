@@ -1,0 +1,212 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="http://www.softwhy.com/" />
+<title>蚂蚁部落</title>
+</head>
+<body>
+<canvas id="mycanvas" width="500" height="600"></canvas>
+</body>
+<script>
+var mycanvas = document.getElementById('mycanvas');
+var f = mycanvas.getContext('2d');
+var mycanvas = document.getElementById('mycanvas');
+var context = mycanvas.getContext('2d');
+context.beginPath();
+context.fillStyle = 'blue';
+context.arc(200, 175, 135, 45 * Math.PI / 180, 135 * Math.PI / 180, true);
+context.closePath();
+context.fill();
+context.stroke();
+ 
+context.beginPath();
+context.fillStyle = 'white';
+context.arc(200, 200, 110, 40 * Math.PI / 180, 140 * Math.PI / 180, true);
+context.fill();
+context.stroke();
+ 
+context.beginPath();
+context.lineWidth = 2;
+context.fillStyle = 'white';
+context.moveTo(200, 100);
+context.bezierCurveTo(210, 40, 140, 40, 150, 100);
+context.lineTo(150, 100);
+context.bezierCurveTo(160, 130, 190, 130, 200, 100);
+context.closePath();
+context.fill();
+context.stroke();
+// 左
+context.beginPath();
+context.moveTo(165, 80);
+context.quadraticCurveTo(187, 75, 195, 95);
+context.stroke();
+context.beginPath();
+context.moveTo(160, 100);
+context.quadraticCurveTo(175, 85, 195, 95);
+context.stroke();
+ 
+ 
+context.beginPath();
+context.fillStyle = 'white';
+context.moveTo(200, 100);
+context.bezierCurveTo(190, 40, 260, 40, 250, 100);
+context.lineTo(250, 100);
+context.bezierCurveTo(240, 130, 210, 130, 200, 100);
+context.closePath();
+context.fill();
+context.stroke();
+// 右
+context.beginPath();
+context.save();
+context.scale(1, 2);
+context.translate(0, -50);
+context.arc(214, 95, 10, 0, 2 * Math.PI);
+context.fillStyle = 'black';
+context.fill();
+context.closePath();
+context.restore();
+context.stroke()
+ 
+context.beginPath();
+context.fillStyle = 'white';
+context.arc(211, 95, 7, 0, 2 * Math.PI);
+context.fill();
+context.stroke();
+// 鼻子
+context.beginPath();
+context.fillStyle = 'red';
+context.lineWidth = 2;
+context.arc(200, 150, 20, 0, 2 * Math.PI);
+context.fill();
+context.stroke();
+ 
+context.beginPath();
+context.moveTo(200, 170);
+context.quadraticCurveTo(205, 190, 200, 240);
+context.stroke();
+ 
+// 嘴
+context.beginPath();
+context.moveTo(120, 205);
+context.bezierCurveTo(160, 250, 240, 250, 280, 205);
+context.stroke();
+// 脖子
+context.beginPath();
+context.strokeStyle = 'red';
+context.lineWidth = 10;
+context.lineCap = 'round';
+context.moveTo(100, 270);
+context.lineTo(300, 270);
+context.stroke();
+// 胳膊
+context.beginPath();
+context.strokeStyle = 'black';
+context.lineWidth = 2;
+context.moveTo(110, 275);
+context.fillStyle = 'blue';
+context.quadraticCurveTo(50, 300, 98, 380);
+// context.beginPath();
+ 
+context.lineTo(105, 330);
+context.quadraticCurveTo(90, 400, 105, 450);
+// context.stroke();
+// context.beginPath();
+ 
+context.lineTo(105, 450);
+context.quadraticCurveTo(150, 480, 200, 450);
+ 
+context.lineTo(200, 450);
+context.quadraticCurveTo(255, 480, 295, 450);
+ 
+context.lineTo(295, 450);
+context.quadraticCurveTo(310, 400, 295, 330);
+ 
+context.lineTo(302, 380);
+context.quadraticCurveTo(350, 300, 290, 275);
+context.fillStyle = 'blue';
+context.closePath();
+context.fill();
+context.stroke();
+ 
+// 肚子
+context.beginPath();
+context.strokeStyle = 'black';
+context.fillStyle = 'white';
+context.lineWidth = 2;
+context.moveTo(140, 275);
+context.bezierCurveTo(50, 440, 350, 440, 260, 275);
+context.fill();
+context.stroke();
+// 肚兜
+context.beginPath();
+context.arc(200, 330, 50, 0, Math.PI, false);
+context.closePath();
+context.stroke();
+//铃铛
+context.beginPath();
+context.fillStyle = 'gold';
+context.strokeStyle = 'black';
+context.lineWidth = 2;
+context.arc(200, 295, 20, 0, 2 * Math.PI);
+context.fill();
+context.stroke();
+context.beginPath();
+context.lineWidth = 2;
+context.rect(181, 288, 38, 5);
+context.stroke();
+context.beginPath();
+context.arc(200, 300, 7, 0, 2 * Math.PI);
+context.stroke();
+//  鞋
+context.beginPath();
+context.moveTo(105, 450);
+context.bezierCurveTo(40, 490, 150, 500, 195, 480);
+context.stroke();
+ 
+context.beginPath();
+context.moveTo(295, 450);
+context.bezierCurveTo(350, 490, 255, 500, 195, 480);
+context.stroke();
+//  脚缝
+context.beginPath();
+context.moveTo(200, 450);
+context.quadraticCurveTo(200, 465, 195, 480);
+context.stroke();
+// 腿缝
+context.beginPath();
+context.moveTo(200, 410);
+context.quadraticCurveTo(205, 430, 200, 450);
+context.stroke();
+// 胡子
+context.beginPath();
+context.moveTo(90, 140);
+context.lineTo(160, 160);
+context.stroke();
+ 
+context.beginPath();
+context.moveTo(80, 170);
+context.lineTo(160, 175);
+context.stroke();
+ 
+context.beginPath();
+context.moveTo(80, 195);
+context.lineTo(160, 190);
+context.stroke();
+ 
+context.beginPath();
+context.moveTo(240, 175);
+context.lineTo(320, 170);
+context.stroke();
+ 
+context.beginPath();
+context.moveTo(240, 160);
+context.lineTo(320, 150);
+context.stroke();
+ 
+context.beginPath();
+context.moveTo(240, 190);
+context.lineTo(320, 195);
+context.stroke();
+</script>
+</html>
