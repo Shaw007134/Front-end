@@ -6,12 +6,15 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <link rel="stylesheet" href="./style.css">
-  <link rel="stylesheet" href="./print.css">
-  <link rel="stylesheet" href="./mobile.css">
+  <link rel="stylesheet" href="./print.css" media="print">
+  <link rel="stylesheet" href="./mobile.css" media="screen and (max-device-width: 500px)">
 </head>
 <body>
-  
-  <script scr="./main.js"></script>
-  <script scr="./gbk.js"></script>
+  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="circle">
+    <circle cx="100" cy="100" r="50" stroke="black" stroke-width="3" fill="none"></circle>
+    <!-- <circle cx="100" cy="100" r="49" stroke="black" stroke-width="2" fill="none"></circle> -->
+  </svg>
+  <script src="./main.js"></script>
+  <script charset="gbk" src="./gbk.js"></script>
 </body>
 </html> 
