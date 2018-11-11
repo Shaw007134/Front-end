@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Carousel</title>
+  <link href="./style.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="window">
+      <div id="slides" class="images">
+        <img src="./img/imac.jpg" alt="imac">
+        <img src="./img/iphone.jpg" alt="iphone">
+        <img src="./img/macbook.jpg" alt="macbook">
+        <img src="./img/info.jpg" alt="info">
+      </div>
+    </div>
+    
+    <div id=buttonWrapper style="text-align: center">
+        <div class="bar">
+            <ul class="clearfix">
+                
+                <li>
+                <a href="#">
+                    <img src="./img/thumb_imac.png" alt="">
+                </a>
+                </li>
+                <li>
+                <a href="#">
+                    <img src="./img/thumb_iphone.png" alt="">
+                </a>
+                </li>
+                <li>
+                <a href="#">
+                    <img src="./img/thumb_macbook.png" alt="">
+                </a>
+                </li>
+                <li>
+                <a href="#">
+                    <img src="./img/thumb_about.png" alt="">
+                </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="controls" id="controls">
+      <button id="previous">上一张</button>
+      <button id="next">下一张</button>
+    </div>
+
+    </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="./main.js"></script>
+</body>
+</html>
