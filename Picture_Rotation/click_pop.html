@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body{
+      border: 1px solid red;
+    }
+    .wrapper{
+      position: relative;
+      display: inline-block;
+    }
+    .popover{
+      border: 1px solid red;
+      position: absolute;
+      left: 100%;
+      top: 0;
+      white-space: nowrap;
+      padding: 10px;
+      margin-left: 10px;
+      background: white;
+      display: none;
+    }
+    .popover::before{
+      position: absolute;
+      right: 100%;
+      top: 5px;
+      border: 10px solid transparent;
+      border-right-color: red;
+      content: '';
+    }
+    .popover::after{
+      position: absolute;
+      right: 100%;
+      top: 5px;
+      border: 10px solid transparent;
+      content: '';
+      margin-right: -1px;
+    }
+  </style>
+</head>
+<body>
+  <div id="wrapper" class="wrapper">
+    <button id="clickMe">Click</button>
+    <div id="popover" class="popover">
+      <input type="checkbox">浮层
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+    $(clickMe).on('click',function(){
+      if (popover.style.display === 'block'){
+        $(popover).hide()
+      }else {
+        $(popover).show()
+        listenToDocument()
+      }
+    })
+
+    function listenToDocument(){
+      $(document).on('click',function(e){
+        // if (e.target === $('html')[0]){
+          $(popover).hide()
+        // }
+      })
+    }
+  </script>
+</body>
+</html>
