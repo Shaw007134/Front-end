@@ -391,6 +391,7 @@ body main {
   font-size: 16px;
 }
 
+section.messageboard,
 section.skills,
 section.portfolio {
   max-width: 940px;
@@ -399,6 +400,7 @@ section.portfolio {
   margin-top: 58px;
 }
 
+section.messageboard h2,
 section.skills h2,
 section.portfolio h2,
 section.contact h2 {
@@ -408,6 +410,7 @@ section.contact h2 {
   font-weight: bold;
   text-align: center;
 }
+
 
 section.skills h3 {
   font-size: 14px;
@@ -583,7 +586,7 @@ section.portfolio .works {
 }
 
 /* Style inputs with type="text", select elements and textareas */
-input[type=text], [type=email], textarea {
+section.contact input[type=text], [type=email], textarea {
   width: 100%; /* Full width */
   padding: 12px; /* Some padding */  
   border: 1px solid #ccc; /* Gray border */
@@ -595,7 +598,7 @@ input[type=text], [type=email], textarea {
 }
 
 /* Style the submit button with a specific background color etc */
-input[type=submit] {
+section.contact input[type=submit] {
   background-color: #4CAF50;
   color: white;
   padding: 12px 20px;
@@ -605,7 +608,7 @@ input[type=submit] {
 }
 
 /* When moving the mouse over the submit button, add a darker green color */
-input[type=submit]:hover {
+section.contact input[type=submit]:hover {
   background-color: #45a049;
 }
 
@@ -616,4 +619,36 @@ input[type=submit]:hover {
   padding: 20px;
   margin-top: 20px;
   margin-bottom: 40px;
+}
+
+section.messageboard .container{
+  padding-top: 8px;
+  margin-bottom: 20px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #fff;
+  border-radius: 1px;
+  box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.35);
+  /* border: 1px solid red; */
+}
+
+section.messageboard ul{
+  border-top: 1px solide black;
+  padding-top: 20px;
+}
+
+section.messageboard ul li{
+  border-bottom: 1px solid black;
+  margin-bottom: 20px;
+  padding-bottom: 2px;
+}
+
+section.messageboard .form_info{
+  margin-bottom: 80px;
+}
+
+section.messageboard .form_info form{
+  /* margin: 0 auto; */
+  text-align: center;
 }

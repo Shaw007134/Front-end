@@ -245,6 +245,24 @@
         </div>
   </section>
 
+
+  <section id = "messageboard" class="messageboard">
+    <h2>Message Board</h2>
+    <div class="container">
+      <ul id="history_message">
+      </ul>
+    </div>
+    <div class="form_info" id="form_info">
+      <form id="postmessage">
+        <label for="name">Name</label>
+        <input type="text" id="name">
+        <label for="content">Content</label>
+        <input type="text" id="content">
+        <input type="submit">
+      </form>
+    </div>
+  </section>
+
   <script>
       portfolioAll.onclick = function(){
         portfolioBar.className = "bar state1"
@@ -255,11 +273,14 @@
       portfolioValina.onclick = function(){
         portfolioBar.className = "bar state3"
       }  
-    </script>
+  </script>
+  
+  <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.0/dist/av-min.js"></script>
+  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="./main.js"></script>
-
+  
   <script>
     
     // setTimeout(function(){
@@ -340,6 +361,8 @@
       }
    }
   </script>
+
+
 
  </body>
 </html>
