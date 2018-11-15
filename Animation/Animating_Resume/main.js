@@ -167,7 +167,7 @@ function createPaper(){
 
 write(data1,"#code",'css',true)
 write(data1,"#style_m",'css','').then(
-  createPaper().then(write(md,"#content",'markup',true)))
+  createPaper).then(write(md,"#content",'markup',true))
 // var write_css = write(data1,"#style_m")
 // write(data1,"#code",'css',true)
 // write(data1,"#style_m",'css','',()=>{
