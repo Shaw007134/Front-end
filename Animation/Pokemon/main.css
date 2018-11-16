@@ -3459,6 +3459,75 @@ body{
   position: absolute;
 }
 
+
+.head {
+  animation: head 10s 0s cubic-bezier(0.645, 0.045, 0.355, 1) both infinite;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.ear {
+  transform-origin: bottom left;
+  transform: translateX(40px);
+}
+
+.ear:before, .ear:after {
+  animation: ear 10s 0.1s cubic-bezier(0.645, 0.045, 0.355, 1) both infinite;
+  animation-delay: 50ms;
+}
+
+.eyes {
+  animation: eyes 10s 0s cubic-bezier(0.645, 0.045, 0.355, 1) both infinite;
+}
+
+
+.mouth {
+  animation: mouth 10s 0s cubic-bezier(0.645, 0.045, 0.355, 1) both infinite, mouth-move 10s 0s cubic-bezier(0.645, 0.045, 0.355, 1) both infinite;
+  animation-timing-function: step-end, cubic-bezier(0.645, 0.045, 0.355, 1);
+  animation-fill-mode: none;
+}
+
+.nose {
+  animation: nose 10s 0s cubic-bezier(0.645, 0.045, 0.355, 1) both infinite;
+}
+
+.chest {
+  animation: chest 10s 0.05s cubic-bezier(0.645, 0.045, 0.355, 1) both infinite;
+}
+
+.fur:first-child {
+  animation: fur-center 10s 0.1s cubic-bezier(0.645, 0.045, 0.355, 1) both infinite;
+}
+
+.fur:nth-child(3) {
+  animation: fur-right 10s 0.15s cubic-bezier(0.645, 0.045, 0.355, 1) both infinite;
+}
+
+.body {
+  animation: body 10s 0s cubic-bezier(0.645, 0.045, 0.355, 1) both infinite;
+}
+
+.tail {
+  animation: tail 10s 0s cubic-bezier(0.645, 0.045, 0.355, 1) both infinite;
+}
+
+.tail > .tail > .tail * {
+  animation: tail-end 10s 0s cubic-bezier(0.645, 0.045, 0.355, 1) both infinite;
+}
+
+.legs {
+  animation: legs 10s 0s cubic-bezier(0.645, 0.045, 0.355, 1) both infinite;
+}
+
+  
+.leg {
+  animation: leg 10s 0s cubic-bezier(0.645, 0.045, 0.355, 1) both infinite;
+}
+
+.leg > .inner-leg {
+  animation: leg-inner 10s 0s cubic-bezier(0.645, 0.045, 0.355, 1) both infinite;
+}
+
 *, *:before, *:after {
   box-sizing: border-box;
   position: relative;

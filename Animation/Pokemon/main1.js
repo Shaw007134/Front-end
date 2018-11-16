@@ -172,6 +172,7 @@ var data =`
   overflow: hidden;
 }
 .eye > .eyelid:before {
+  animation: eyelid 10s 0s cubic-bezier(0.645, 0.045, 0.355, 1) both infinite;
   content: '';
   position: absolute;
   display: block;
