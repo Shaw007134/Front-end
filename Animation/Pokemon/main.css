@@ -3435,7 +3435,7 @@ body{
   flex: 1;
   height: 50vh;
   width:100%;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   transition: all 1s;
   display: flex;
   flex-direction: column;
@@ -3448,7 +3448,7 @@ body{
   height: 325px;
   width: 410px;
   position: relative;
-  border: 1px solid yellow;
+  /* border: 1px solid yellow; */
 }
 
 .eevee * {
