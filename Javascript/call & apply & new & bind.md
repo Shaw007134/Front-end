@@ -234,3 +234,9 @@ function objectFactory() {
     return typeof ret === 'object' ? ret : obj;
 
 };
+我们回顾下 new 的实现步骤：
+
+首先新建一个对象
+然后将对象的原型指向 Person.prototype
+然后 Person.apply(obj)
+返回这个对象
