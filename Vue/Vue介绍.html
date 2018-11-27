@@ -6,13 +6,24 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <script src="./vue.js"></script>
+
+  <style>
+    [v-cloak]{
+      display: none;
+    }
+  </style>
 </head>
 <body>
   <!--将来new的Vue实例，将会控制这个元素中的所有内容-->
   <!--Vue实例所控制的这个元素区域，就是我们的V-->
   <div id="name">
-    {{name}}
+    <p>{{name}}</p>
+    <p v-text="name"></p>
+    <p v-text=name></p>
+    <p v-text='name'></p>
+    <span v-cloak>{{name}}</span> <!--v-cloak控制数据加载完才显示-->
     <button v-on="change">{{number}}</button>
+
   </div>
 
 <script>
