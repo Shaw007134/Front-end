@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <input type="button" value="浪起来" @click='lang'>
+    <input type="button" value="低调" @click='reset'>
+    <h4>{{msg}}</h4>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data:{
+        msg: "猥琐发育，别浪~~!",
+        intervalID: null,
+      },
+      methods:{
+        lang: function(){
+          // var _this = this
+          if(this.intervalID != null){
+            console.log(this.intervalID)
+            return
+          }
+          this.intervalID = setInterval(()=>{
+            console.log(this.msg)
+            var start = this.msg.substring(0,1)
+            var end = this.msg.substring(1)
+            this.msg = end + start
+          //vm实例会监听data所有数据变化，一变化就会同步渲染到页面上
+          },400)
+        },
+        reset(){
+          clearInterval(this.intervalID)
+          this.intervalID = null
+        }
+      }
+
+    })
+  
+  </script>
+</body>
+</html>

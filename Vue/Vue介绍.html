@@ -20,10 +20,14 @@
     <p>{{name}}</p>
     <p v-text="name"></p>
     <p v-text=name></p>
-    <p v-text='name'></p>
-    <span v-cloak>{{name}}</span> <!--v-cloak控制数据加载完才显示-->
-    <button v-on="change">{{number}}</button>
-
+    <p v-text='name'>+++---</p> <!--默认v-text没有闪烁问题，会覆盖元素中原本的内容，但插值表达式只会替换占位符-->
+    <p v-text="msg"></p>
+    <span v-cloak>+++{{name}}---</span> <!--v-cloak控制数据加载完才显示-->
+    <!--v-bind是vue提供的快速绑定属性的指令，可简写为:-->
+    <!--v-on是vue提供的快速绑定事件的指令，可简写为@-->
+    <input type="button" value="number" :title="msg+'123'" 
+      @click="show">
+    <!--v-bind中可以写合法的JS表达式-->
   </div>
 
 <script>
@@ -34,12 +38,14 @@
     el: "#name", //我们new的这个Vue实例，要控制页面上的哪个区域
     data:{       // data属性中，存放的是el中要用到的数据
       name: "我是shaw", //通过Vue提供的指令，很方便能把数据渲染到页面上
-                       //无需手动操作DOM元素
+      msg: "我是按钮",
+      msg1: "<h1>我是Title</h1>", //无需手动 操作DOM元素
       number: 1,
     },
-    methods:{
-      change: function(){
+    methods:{ //d定义了vue实例所有可用方法
+      show: function(){
         this.number += 1;
+        console.log(this.number);
       }
     }
   });

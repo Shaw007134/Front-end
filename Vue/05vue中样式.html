@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./vue.js"></script>
+  <style>
+    .red{
+      color: red;
+    }
+
+    .thin{
+      font-weight: 200;
+    }
+
+    .italic{
+      font-style: italic;
+    }
+
+    .active{
+      letter-spacing: 0.5em;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <!--使用数组保存需要添加的属性，可添加对象key为属性名，value为标识符-->
+    <h1 :class=['red',{'thin':flag},flag?'italic':'']>这是一个很大很大的H1，大到你无法想象</h1>
+    <!--使用对象保存需要添加的属性及标识符，属性名可不加''-->
+    <h1 :class="classObj">这是一个很大很大的H1，大到你无法想象</h1>
+    <h1 :style="{color:'red', 'font-weight':200}">Vue中的内联Style</h1>
+    <h1 :style='[style1,style2]'>Vue中的内联Style</h1>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        flag: false,
+        classObj: {red:false, 'thin':true},
+        style1: {color:"red"},
+        style2: {'font-weight':200}
+      },
+      methods: {
+        
+      }
+    })
+    
+  </script>
+</body>
+</html>
