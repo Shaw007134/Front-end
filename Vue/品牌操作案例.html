@@ -28,7 +28,7 @@
           <input type="button" @click="add()" value="Add" class="btn btn-primary">
           <label for="">
             Search:
-            <input type="text" v-model="keywords" class="form-control">
+            <input type="text" v-model="keywords" class="form-control" v-focus v-color="'blue'">
           </label>
         
         </div>
@@ -48,7 +48,7 @@
         <tr v-for="item in search(keywords)" :key="item.id">
           <td>{{item.id}}</td>
           <td v-text="item.name"></td>
-          <td>{{item.ctime}}</td>
+          <td>{{item.ctime | dateFormat('yyyy-mm-dd')}}</td>
           <td>
             <a href="" @click.prevent="del(item.id)">Delete</a>
           </td>
@@ -58,6 +58,46 @@
     
   </div>
   <script>
+    //过滤器可用于常见文本格式化，只能用在差值表达式，和v-bind表达式
+    //过滤器使用{{data | 过滤器}}
+    Vue.filter('dateFormat',function(dataStr,pattern=''){
+      //new Date接收给定的时间字符串，得到特定的时间
+      var dt = new Date(dataStr)
+      var y = dt.getFullYear()
+      var m = (dt.getMonth() + 1).toString().padStart(2,'0')
+      var d = dt.getDate().toString().padStart(2,'0')
+      if(pattern.toLowerCase()==='yyyy-mm-dd'){
+      //return y+'-'+m+'-'+d
+        return `${y}-${m}-${d}`
+      }else{
+        var hh = dt.getHours().toString().padStart(2,'0')
+        var mm = dt.getMinutes().toString().padStart(2,'0')
+        var ss = dt.getSeconds().toString().padStart(2,'0')
+        return `${y}-${m}-${d} ${hh}:${mm}:${ss}`
+      }
+    })
+
+    Vue.config.keyCodes.f2 = 113
+    //设置键盘修饰符
+
+    Vue.directive('focus',{
+    //directive可以自定义指令，定义在不同生命周期的钩子函数上的函数
+    //在每个函数中，第一个参数，永远是el，表示被绑定了指令的那个元素
+    //这个el是一个原生的JS对象
+      bind: function(el){
+      //每当指令绑定到元素上时，会立即执行这个bind函数，只执行一次
+      //常用于与样式有关的操作
+      },
+      inserted: function(el){
+      //inserted表示元素插入到DOM中的时候，会执行inserted函数，触发一次
+      //常用于与JS行为相关
+        el.focus()
+      },
+      updated: function(el){
+      //当VNode更新时，会执行updated，可能会触发多次
+      }
+    })
+
     var vm = new Vue({
       el: '#app',
       data: {
@@ -117,6 +157,34 @@
           */
         },
       }
+      ,
+      filters: {
+        //定义私有过滤器，其有两个条件，过滤器名称 + 处理函数
+        dateFormat: function(dataStr, pattern=''){
+          var dt = new Date(dataStr)
+          var y = dt.getFullYear()
+          var m = (dt.getMonth() + 1).toString().padStart(2,'0')
+          var d = dt.getDate().toString().padStart(2,'0')
+          if(pattern.toLowerCase()==='yyyy-mm-dd'){
+          //return y+'-'+m+'-'+d
+            return `${y}-${m}-${d}---`
+          }else{
+            var hh = dt.getHours().toString().padStart(2,'0')
+            var mm = dt.getMinutes().toString().padStart(2,'0')
+            var ss = dt.getSeconds().toString().padStart(2,'0')
+            return `${y}-${m}-${d} ${hh}:${mm}:${ss}---`
+          }
+        }
+      },
+      directives:{
+      //定义私有指令
+        'color':{
+          bind: function(el,binding){
+            el.style.color=binding.value
+          }
+        }
+      }
+    
     })
     
   </script>

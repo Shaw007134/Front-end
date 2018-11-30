@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./vue.js"></script>
+  
+</head>
+<body>
+  <div id="app">
+    <p>{{msg|msgFormat('疯狂')}}</p>
+  </div>
+  <script>
+    Vue.filter('msgFormat',function(msg,arg){
+      //过滤器可以传入多个参数
+      return msg.replace(/单纯/g,arg)
+      //replace第一个参数可以是正则表达式，g代表全局匹配
+    })
+    //可通过管道操作符，调用多个过滤器
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        msg: '单纯，单纯',
+      },
+      methods: {
+        
+      }
+    })
+    
+  </script>
+</body>
+</html>
