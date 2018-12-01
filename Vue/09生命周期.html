@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./vue.js"></script>
+  
+</head>
+<body>
+  <div id="app">
+    <input type="button" value="修改msg" @click="msg='No'">
+    <h3 id="h3">{{msg}}</h3>
+  </div>
+  <script>
+    //生命周期钩子 = 生命周期函数 = 生命周期事件
+    //创建 - 运行 - 销毁
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        msg: 'ok'
+      },
+      methods: {
+        show(){
+          console.log('执行了show方法')
+        }
+      },
+      beforeCreate(){
+        //console.log(this.msg) -- undefined
+        //this.show() -- undefined
+      },
+      //第一个生命周期函数，表示实例在完全被创建出来之前，会执行它
+      //data与methods都没初始化
+
+      created(){
+      //data与methods已经初始化
+        console.log(this.msg) 
+        this.show() 
+      },
+      beforeMount(){
+      //模板在内存中编译好了，但没有渲染到页面
+      //页面中的元素还没有被data中相应替换，还是模板字符串
+      },
+      mounted(){
+      //表示内存中的模板已经真实挂载到页面中
+      //实例创建期间的最后一个生命周期函数，执行完mounted，表示实例已经完全创建好了  
+      },
+      beforeUpdate(){
+      //页面还没有被更新，但数据肯定进行了更新
+        console.log('页面上元素的内容：'+document.getElementById('h3').innerText)
+        console.log('data中msg数据为:'+this.msg)
+      //页面与数据不同步
+      },
+      updated(){
+        console.log('页面上元素的内容：'+document.getElementById('h3').innerText)
+        console.log('data中msg数据为:'+this.msg)
+        //页面与数据已经同步了
+      }
+    })
+    
+  </script>
+</body>
+</html>

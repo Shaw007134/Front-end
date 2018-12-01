@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./vue.js"></script>
+  <link rel="stylesheet" href="animate.css">
+  <style>
+    .v-enter,
+    .v-leave-to{
+      opacity: 0;
+      transform: translateX(150px)
+    }
+    .v-enter-active,
+    .v-leave-active{
+      transition: all 0.8s ease;
+    }
+
+    .my-enter,
+    .my-leave-to{
+      opacity: 0;
+      transform: translateY(150px)
+    }
+    .my-enter-active,
+    .my-leave-active{
+      transition: all 0.8s ease;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <input type="button" value="toggle" @click="flag=!flag">
+    <transition>
+      <h3 v-if="flag">这是一个H3</h3>
+    </transition>
+    <!-- 使用transition包裹住需要动画控制的元素 -->
+    <hr>
+    <input type="button" value="toggle" @click="flag2=!flag2">
+    <transition name="my">
+      <h6 v-if="flag2">这是一个H6</h6>
+    </transition>
+
+    <hr>
+    <input type="button" value="toggle" @click="flag3=!flag3">
+    <transition enter-active-class="bounceIn"
+      leave-active-class="bounceOut">
+      <h4 v-if="flag3">通过animate css实现动画</h4>
+    </transition>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        flag:false,
+        flag2: false,
+        flag3: false,
+      },
+      methods: {
+        
+      }
+    })
+    
+  </script>
+</body>
+</html>

@@ -28,7 +28,7 @@
           <input type="button" @click="add()" value="Add" class="btn btn-primary">
           <label for="">
             Search:
-            <input type="text" v-model="keywords" class="form-control" v-focus v-color="'blue'">
+            <input type="text" v-model="keywords" class="form-control" v-focus v-color="'blue'" v-fontsize="'20px'">
           </label>
         
         </div>
@@ -182,6 +182,10 @@
           bind: function(el,binding){
             el.style.color=binding.value
           }
+        },
+        //可对同时绑定到bind和update上的函数使用以下简写
+        'fontsize': function(el,binding){
+          el.style.fontSize = parseInt(binding.value) + 'px'
         }
       }
     
