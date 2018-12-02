@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./vue.js"></script>
+  <style>
+    .v-enter,
+    .v-leave-to{
+      opacity: 0;
+      transform: translateX(150px);
+    }
+    
+    .v-enter-active,
+    .v-leave-active{
+      transition: all 0.5s;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="app">
+    <a href="" @click.prevent="comName='login'">登录</a>
+    <a href="" @click.prevent="comName='register'">注册</a>
+    <!-- vue提供了component，来展示对应名称的组件 -->
+    <transition>
+      <!-- mode可设置组件切换的过渡效果 -->
+      <component :is="comName"></component>
+    </transition>
+
+    <!-- 总结：现在学习了以下Vue提供的标签
+      component, template, transtion, transitionGroups
+    -->
+
+  </div>
+  <script>
+    Vue.component('login',{
+      template:'<h3>登录组件</h3>'
+    })
+    
+    Vue.component('register',{
+      template:'<h3>注册组件</h3>'
+    })
+
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        flag: false,
+        comName: 'login',
+      },
+      methods: {
+        
+      }
+    })
+    
+  </script>
+</body>
+</html>

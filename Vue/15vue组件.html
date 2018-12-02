@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./vue.js"></script>
+  
+</head>
+<!-- 组件能让我们拆分Vue实例中的代码量，不同的组件划分不同功能模块，需要什么功能调用对应组件
+组件化与模块化不同，模块化时从代码逻辑的角度划分，方便代码分层开发，保证每个功能模块的职能单一
+组件化是从UI界面的角度进行划分，方便UI组件的重用 -->
+<body>
+  <div id="app">
+    <my-com1></my-com1>
+    <!-- 通过标签的方式引入组件，注意驼峰命名的组件改写需要-分割 -->
+    <mycom2></mycom2>
+  </div>
+
+  <div id="app2">
+    <login></login>
+  </div>
+
+  <template id="temp1">
+    <div>
+      <h1>这是使用template元素，在外部定义的组件结构</h1>
+      <p>有代码提示和高亮</p>
+    </div>
+  </template>
+
+  <template id="temp2">
+      <div>
+        <h3>这是私有的login组件</h3>
+      </div>
+    </template>
+
+  <script>
+    //1.使用Vue.extend来创建全局的Vue组件
+    //Vue.component第一个参数是组件的名称，第二个参数是Vue.extend创建的组件
+    //template里只能有一个根元素
+    var com1 = Vue.extend({
+      template:'<h3>这是使用Vue.extend创建的组件</h3>'
+    })
+
+    Vue.component('myCom1',com1)
+    // Vue.component('myCom1',{
+    //   template:'<h3>这是使用Vue.extend创建的组件</h3>'
+    // })
+
+    //2.使用外部template方式创建模板
+    Vue.component('mycom2',Vue.extend({
+      template: "#temp1"
+    }))
+
+
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        
+      },
+      methods: {
+        
+      }
+    })
+    
+    var vm2 = new Vue({
+      el: '#app2',
+      data:{},
+      methods: {},
+      directives:{},
+      filters:{},
+      components:{ //定义内部私有组件
+        login:{
+          template: '#temp2'
+        }
+      },
+
+      beforeCreate() {},
+      created() {},
+      beforeMount() {},
+      mounted() {},
+      beforeUpdate() {},
+      updated() {},
+      beforeDestroy() {},
+      destroyed() {},
+      
+    })
+  </script>
+</body>
+</html>

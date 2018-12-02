@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./vue.js"></script>
+  
+</head>
+<body>
+  <div id="app">
+    <!-- 父组件通过v-bind绑定一个变量，将父组件数据传递到子组件 -->
+    <!-- 父组件通过v-on绑定一个方法，将父组件方法传递到子组件 -->
+    <com1 :parentmsg="msg" @func="show"></com1>
+  </div>
+
+  <template id="temp1">
+    <div>
+      <h1>这是子组件</h1>
+      <input type="button" value="子组件按钮" @click="myclick">
+    </div>
+  </template>
+
+  <script>
+    var com1 = {
+          data(){
+            //data中的数据可读可写
+            return{
+              com1msg:{
+                title:'123',
+                content:'qqq',
+            }}
+          },
+          template: '#temp1',
+          //props里是父组件传递的变量，需申明后再在模板中使用
+          //props里的数据都是只读的
+          props: ['parentmsg',],
+          directives:{},
+          filters: {},
+          components: {},
+          methods:{
+            //子组件通过emit调用父组件通过v-on传递的方法
+            myclick(){
+              console.log('子组件myclick')
+              this.$emit('func',this.com1msg)
+            }
+          }
+        }
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        msg: "这是父组件msg",
+        datamsgFromSon: null
+      },
+      methods: {
+        show(data){
+          console.log('调用了父组件中的show方法'+data)
+          this.datamsgFromSon = data
+          console.log(this.datamsgFromSon)
+        }
+      },
+      components:{
+        com1
+      }
+    })
+    
+  </script>
+</body>
+</html>

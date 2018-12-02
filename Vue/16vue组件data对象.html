@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./vue.js"></script>
+  
+</head>
+<body>
+  <div id="app">
+    <mycom1></mycom1>
+    <hr>
+    <mycom1></mycom1>
+    <hr>
+    <mycom1></mycom1>
+    <hr>
+  </div>
+
+  <template id="temp1">
+    <div>
+      <input type="button" value="+1" @click="increase">
+      <h3>{{count}}</h3>
+    </div>
+  </template>
+
+  <script>
+    //组件可以有自己的数据，但组件的data与实例data不同，必须是一个返回对象的方法
+    //每次调用组件都会执行一个函数，将创建一个新的对象，防止造成全局对象
+    //组件中也可以包含自己的方法
+    Vue.component('mycom1',{
+      template:'#temp1',
+      data:function(){
+        return{
+          count:0
+        }
+      },
+      methods:{
+        increase(){
+          this.count++
+        }
+      }
+    })
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        
+      },
+      methods: {
+        
+      }
+    })
+    
+  </script>
+</body>
+</html>
