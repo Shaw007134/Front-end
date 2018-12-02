@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./vue.js"></script>
+  <style>
+    .ball{
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: burlywood;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <input type="button" value="Add" @click="flag=!flag">
+    <transition
+      @before-enter="beforeEnter"
+      @enter="enter"
+      @after-enter="afterEnter"
+    >
+      <div class="ball" v-show="flag"></div>
+    </transition>
+    
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        flag: false
+      },
+      methods: {
+        //动画钩子函数第一个参数el表示要执行动画的那个DOM元素，是个原生JS对象
+        beforeEnter(el){
+        //beforeEnter表示动画入场之前，此时动画尚未开始
+          console.log('beforeEnter'+this.flag)
+          console.log(el)
+          el.style.transform = "translate(0,0)"
+        },
+        enter(el,done){
+          console.log('Enter'+this.flag)
+          console.log(el)
+          //无实际效果，保证动画会出现，Height, Left, Right均可
+          el.offsetWidth
+          //enter表示动画开始后的样式，可设置小球完成动画之后的样式
+          el.style.transform = "translate(150px, 450px)"
+          el.style.transition = "all 1s ease"
+          done()
+          //done其实就是afterEnter函数的引用
+          //当只用JavaScript过渡时，在enter和leave中，回调函数
+          //done是必须的，它们会同步调用，过渡立即完成
+        },
+        afterEnter(el){
+          console.log('afterEnter'+this.flag)
+          console.log(el)
+          this.flag = !this.flag
+        }
+      }
+    })
+    
+  </script>
+</body>
+</html>
