@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./vue.js"></script>
+  <script src="./vue-router.js"></script>
+  <style>
+    .router-link-active,.myactive{
+      color: red;
+      font-style: italic;
+    }
+
+    .v-enter,
+    .v-leave-to{
+      opacity: 0;
+      transform: translateX(140px);
+    }
+
+    .v-enter-active,
+    .v-leave-active{
+      transition: all 0.5s ease;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <router-link to="/account">Account</router-link>
+    <router-view></router-view>
+    <!-- <a href="#/login">登录</a>
+    <a href="#/register">注册</a> -->
+    <!-- router-link默认渲染为a标签 -->
+    
+  </div>
+
+  <template id="temp1">
+    <div>
+      <h1>这是Account组件</h1>
+      <router-link to="/account/login?id=10&name=zs" tag="span">登录</router-link>
+      <router-link to="/account/register/12/ls">注册</router-link>
+      <!-- 占位符，路由规则匹配到的元素将会显示这里 -->
+      <transition mode="out-in">
+        <router-view></router-view>
+    </transition>
+    </div>
+  </template>
+
+  <script>
+    var account = {
+      template: '#temp1'
+    }
+
+    var login = {
+      data(){
+        return{
+          msg: '123'
+        }
+      },
+      template: '<h1>登录组件---{{$route.query.id}}--{{$route.query.name}}</h1>',
+      created() {
+        console.log(this.$route.query.id)
+      },
+    }
+
+    var register = {
+      template: '<h1>注册组件--{{$route.params.id}}--{{$route.params.name}}</h1>'
+    }
+
+    var routerObj = new VueRouter({
+      //构造函数传入一个配置对象，其中route表示路由匹配规则列表
+      //route每一项是由Path,及对应的组件模板对象组成
+      routes: [
+        {path: '/',redirect:'/account'},
+        {path:'/account',component:account,
+        //使用children属性实现子路由，同时，子路由的path前面不要带斜线
+        //否则永远以根路径来请求
+          children:[
+            {path:'login',component: login},
+            {path:'register/:id/:name',component: register}
+          ]
+        },
+      ],
+      // linkActiveClass: 'myactive'
+    })
+
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        
+      },
+      methods: {
+        
+      },
+      router: routerObj
+      //将路由规则地址注册到Vue实例上，用来监听URL地址改变
+    })
+    
+  </script>
+</body>
+</html>
