@@ -3,6 +3,12 @@
     <h1>这是App组件</h1>
     <mt-button type="danger" size="normal disabled" plain
       icon="back" @click="show">default</mt-button>
+    <mt-button type="primary">12</mt-button>
+
+    <button type="button" class="mui-btn mui-btn-royal">
+					紫色
+    </button>
+
     <router-link to="/account">Account</router-link>
     <router-link to="/goodslist">GoodsList</router-link>
     <router-view></router-view>
