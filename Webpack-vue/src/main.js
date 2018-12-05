@@ -25,5 +25,9 @@ var vm = new Vue({
   render: c=>c(login)
 })
 
-
+import m1,{title as title123,content} from "./test.js"
+console.log('export default:')
+console.log(m1)
+console.log('export')
+console.log(title+' '+content)
 
