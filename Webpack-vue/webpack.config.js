@@ -47,7 +47,13 @@ module.exports = {
       //limit给定的值是图片的大小，单位为byte，若引用图片大于此值，不会转为base64编码，反之则会
     //   }
       {test:/\.(ttf|eot|svg|woff|woff2)$/,use:'url-loader'},
-      {test:/\.js$/,use:'babel-loader',exclude:/node_modules/}
+      {test:/\.js$/,use:'babel-loader',exclude:/node_modules/},
+      {test:/\.vue$/,use:'vue-loader'}
     ]
+  },
+  resolve:{
+    alias:{
+      // 'vue$':'vue/dist/vue.js'
+    }
   }
 };
