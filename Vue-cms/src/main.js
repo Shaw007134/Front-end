@@ -1,23 +1,17 @@
 import Vue from 'vue'
+import app from './App.vue'
+
 import VueRouter from 'vue-router'
-
-//import 'bootstrap/dist/css/bootstrap.css'
-
-
-import './lib/mui/css/mui.min.css'
-//最完整地导入MintUI
-// import MintUI from  'mint-ui'
-// import 'mint-ui/lib/style.css'
-// Vue.use(MintUI)
-
+import router from './router.js'
 Vue.use(VueRouter)
 
-import app from './App.vue'
-import router from './router.js'
+import './lib/mui/css/mui.min.css'
+import './lib/mui/css/icons-extra.css'
 
+import MintUI from  'mint-ui'
 import {Header} from 'mint-ui'
+Vue.component(Header.name,Header)
 
-Vue.component(Button.name,Button)
 
 var vm = new Vue({
   el:'#app',
