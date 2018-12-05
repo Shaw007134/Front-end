@@ -1,6 +1,7 @@
 const path = require('path')
 const wepback = require('webpack')
 const htmlWebpackPlugin = require('html-webpack-plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
   entry: path.join(__dirname,'./src/main.js'),
@@ -21,7 +22,8 @@ module.exports = {
       //自动在页面中加载bundle.js
       template: path.join(__dirname,'./src/index.html'),
       filename: 'index.html'
-    })
+    }),
+    new VueLoaderPlugin()
   ],
   module:{
     //这个节点，用于配置所有第三方模块加载器

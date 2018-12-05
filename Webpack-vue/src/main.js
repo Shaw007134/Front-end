@@ -16,9 +16,13 @@ var vm = new Vue({
   // components:{
   //   login
   // },
-  render: function(createElements){
-    return createElements(login)
-  }
+
+  // render: function(createElements){
+    
+  //   return createElements(login)
+  // }
+
+  render: c=>c(login)
 })
 
 
