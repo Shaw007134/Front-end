@@ -17,12 +17,11 @@ function getFileByPath(fpath){
   return new Promise(function(resolve,reject){
     fs.readFile(fpath,'utf-8',(err,dataStr)=>{
       // if (err) return console.log(err.message)
-      if (err) return PromiseRejectionEvent(err)
+      if (err) return reject(err)
       // console.log(dataStr)
       resolve(dataStr)
     })
   })
-
 }
 
 // getFileByPath('./files/1.txt').then(function(data){
@@ -34,8 +33,12 @@ function getFileByPath(fpath){
 getFileByPath('./files/1.txt')
   .then(function(data){
     console.log(data)
-    return getFileByPath('./files/2.txt')
+    return getFileByPath('./files/22.txt')
   })
+  // ,function(err){
+  //   console.log('这是失败的结果'+err.message)
+  //   return getFileByPath('./files/2.txt')
+  // })
   .then(function(data){
     console.log(data)
     return getFileByPath('./files/3.txt')
@@ -43,5 +46,11 @@ getFileByPath('./files/1.txt')
   .then(function(data){
     console.log(data)
   })
+  .catch(function(err){
+    console.log(err.message)
+  })
 
-  
+  console.log('okokok')
+
+  //某个promise执行失败不影响后续的执行，可以对该promise加上reject处理函数
+  //任一promise执行失败结束后续的所有执行，可以在最后面加上.catch
