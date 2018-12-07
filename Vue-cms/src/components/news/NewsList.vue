@@ -1,18 +1,18 @@
 <template>
   <div>
     <ul class="mui-table-view">
-				<li class="mui-table-view-cell mui-media" v-for="item in newsList"
+				<li class="mui-table-view-cell mui-media" v-for="(item, index) in newsList"
           :key="item.url">
-					<a href="javascript:;">
+					<router-link :to="{path:'/home/newsinfo/'+index,query:{news:item}}">
 						<img class="mui-media-object mui-pull-left" :src="item.urlToImage">
 						<div class="mui-media-body">
-              <h1>{{item.title}}</h1>
+              <h1>{{item.title | titleFormat}}</h1>
 							<p class='mui-ellipsis'>
-                <span>发表时间: {{item.publishedAt}}</span>
                 <span>来源: {{item.source.name}}</span>
+                <span>发表时间: {{item.publishedAt | dateFormat}}</span>
               </p>
 						</div>
-					</a>
+					</router-link>
 				</li>
 			</ul>
   </div>
@@ -21,10 +21,14 @@
 
 
 <script>
-  import {Toast} from 'mint-ui'
-  //f0b2036d2c5e42dda2820fee5f9b28b2
   var url = 'https://newsapi.org/v2/top-headlines?country=cn&apiKey=f0b2036d2c5e42dda2820fee5f9b28b2'
+  import {Toast} from 'mint-ui'
+  import NewsInfo from './NewsInfo.vue'
+  //f0b2036d2c5e42dda2820fee5f9b28b2
   export default {
+    // components:{
+    //   NewsInfo
+    // },
     data(){
       return {
         newsList: []
@@ -38,14 +42,10 @@
         this.$axios.get(url,{
           params:{}
         }).then(res=>{
-          // res = JSON.parse(res)
-          
           this.newsList = res.data.articles
-          console.log(this.newsList)
         })
       }
     }
-    
   }
 </script>
 
