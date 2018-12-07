@@ -16,6 +16,17 @@ Vue.component(Header.name,Header)
 Vue.component(Swipe.name, Swipe)
 Vue.component(SwipeItem.name, SwipeItem)
 
+import axios from 'axios'
+Vue.prototype.$axios = axios;
+
+// unsplash.search.photos("explore", 1, 1)
+// unsplash.photos.getRandomPhoto({query:"cat",count:"3"})
+// .then(res=>{
+//   return res.json()
+// })
+// .then(data=>{
+//   console.log(data)
+// });
 
 var vm = new Vue({
   el:'#app',
