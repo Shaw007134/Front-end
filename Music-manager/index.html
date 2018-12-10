@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>文件上传控件</title>
+</head>
+<body>
+  <h1>File API Demo</h1>
+  <p>
+    <form name="demoForm" id="demoForm" method="POST"
+    action="javascript:uploadAndSubmit();">
+      <p>Upload File: <input type="file" name="file"></p>
+      <p><input type="submit" value="Submit"></p>
+    </form>
+
+    <div>Progress (in Bytes): 
+      <span id="bytesRead"></span>
+      / <span id="bytesTotal"></span>
+    </div>
+  </p>
+  
+  <script>
+    function uploadAndSubmit(){
+      var form = document.forms['demoForm']
+      var formData = new FormData(form)
+
+      if(form["file"].files.length>0){
+        var file = form["file"].files[0]
+        var reader = new FileReader()
+
+        reader.onloadstart = function(){
+          console.log("onloadstart")
+          document.getElementById("bytesTotal").textContent 
+            = file.size  
+        }
+        reader.onprogress = function(p){
+          console.log("onprogress")
+          document.getElementById("bytesRead").textContent 
+            = p.loaded
+        }
+        reader.onload = function(){
+          console.log("load complete")
+        }
+        reader.onloadend = function(){
+          if(reader.error){
+            console.log(reader.error)
+          }else{
+            document.getElementById("bytesRead").textContent = 
+              file.size
+            
+            var xhr = new XMLHttpRequest()
+            xhr.open("POST","http://47.104.228.220:3000/upload?"+file.name)
+            // xhr.overrideMimeType("application/octet-stream")
+            // xhr.sendAsBinary(reader.result)
+            formData.append('test.jpg',Blob,reader.result)
+            xhr.send(formData)
+            xhr.onreadystatechange = function(){
+              if(xhr.readyState === 4 && xhr.status === 200){
+                console.log("upload complete");
+                console.log("response: "+xhr.responseText);
+              }
+            }
+          }
+        }
+        
+        reader.readAsBinaryString(file)
+      }else{
+        alert("Please choose a file")
+      }
+      
+    }
+  </script>
+</body>
+</html>
