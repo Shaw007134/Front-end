@@ -52,16 +52,17 @@
             
             var xhr = new XMLHttpRequest()
             xhr.open("POST","http://47.104.228.220:3000/upload?"+file.name)
-            // xhr.overrideMimeType("application/octet-stream")
+            xhr.overrideMimeType("application/octet-stream")
             // xhr.sendAsBinary(reader.result)
-            formData.append('test.jpg',Blob,reader.result)
-            xhr.send(formData)
+            formData.append('upload',file)
+            // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
             xhr.onreadystatechange = function(){
               if(xhr.readyState === 4 && xhr.status === 200){
                 console.log("upload complete");
                 console.log("response: "+xhr.responseText);
               }
             }
+            xhr.send(formData)
           }
         }
         
