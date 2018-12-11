@@ -4,55 +4,46 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Express测试</title>
+  <title>图片上传及下载</title>
 </head>
 <body>
   <div>
-    <h1>发送请求</h1>
-    <p>点击发送get请求</p>
-    <input type="button" value="GET请求" onclick="sendget()">
-
-    <form name="demoForm" id="demoForm" method="POST"
-    action="javascript:sendpost();">
-      <p>Upload File: <input type="file" name="file"></p>
-      <p><input type="submit" value="Submit"></p>
+    <h1>上传和下载图片</h1>
+    <form enctype="multipart/form-data" method="post" name="fileinfo">
+      <p><input type="file" name="image"></p>
+      <p><input type="submit" value="upload file"></p>
     </form>
-
-    <p>点击发送post请求</p>
-    <input type="button" value="POST请求" onclick="sendpost()">
-    <a href="http://47.104.228.220:3000/download?Attribute.png">点击</a>
+    <div id='info'></div>
   </div>
 
   <script>
-    function sendget(){
-      console.log('执行了sendget方法')
+    var form = document.forms.namedItem("fileinfo")
+    
+    console.log(form)
+    
+    form.addEventListener('submit',function(el){
+      el = el || window.event
+      el.preventDefault()
+      
+      var data = new FormData(form)
+      var file = form['image'].files[0]
+      // data.append('img',form[0].files[0])
+      console.log(file)
       var xhr = new XMLHttpRequest()
-      xhr.open('GET','http://47.104.228.220:3000/download?Attribute.png')
-
-      xhr.onreadystatechange = function(){
-      if(xhr.readyState === 4 && xhr.status === 200){
-        console.log('请求成功')
-        console.log(xhr.responseText)
+      xhr.open('POST','http://47.104.228.220:3000/upload?'+file.name)
+      xhr.onreadystatechange=function(el){
+        console.log("el -----")
+        console.log(el)
+        
+        if(xhr.readyState === 4 && xhr.status === 200){
+          console.log('upload successfully')
+          console.log(xhr.responseText)
         }
       }
-      xhr.send()
-    }
+      xhr.send(data)
+      
+    });
 
-    function sendpost(){
-      console.log('执行了sendpost方法')
-      var formElement = document.querySelector('form')
-      var formData = new FormData(formElement)
-      var xhr = new XMLHttpRequest()
-      xhr.open('POST','http://47.104.228.220:3000/upload?img')
-
-      xhr.onreadystatechange = function(){
-      if(xhr.readyState === 4 && xhr.status === 200){
-        console.log('请求成功')
-        console.log(xhr.responseText)
-        }
-      }
-      xhr.send()
-    }
   </script>
 </body>
 </html>

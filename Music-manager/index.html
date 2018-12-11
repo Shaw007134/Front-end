@@ -10,8 +10,8 @@
   <h1>File API Demo</h1>
   <p>
     <form name="demoForm" id="demoForm" method="POST"
-    action="javascript:uploadAndSubmit();">
-      <p>Upload File: <input type="file" name="file"></p>
+    action="javascript:uploadAndSubmit();" enctype="multipart/form-data">
+      <p>Upload File: <input type="file" name="image"></p>
       <p><input type="submit" value="Submit"></p>
     </form>
 
@@ -20,16 +20,18 @@
       / <span id="bytesTotal"></span>
     </div>
   </p>
+  <p><a href="http://47.104.228.220:3000/download?Attribute.png">下载</a></p>
   
   <script>
     function uploadAndSubmit(){
       var form = document.forms['demoForm']
       var formData = new FormData(form)
 
-      if(form["file"].files.length>0){
-        var file = form["file"].files[0]
+      if(form["image"].files.length>0){
+        var file = form["image"].files[0]
         var reader = new FileReader()
-
+        console.log(form)
+        console.log(file)
         reader.onloadstart = function(){
           console.log("onloadstart")
           document.getElementById("bytesTotal").textContent 
@@ -52,9 +54,9 @@
             
             var xhr = new XMLHttpRequest()
             xhr.open("POST","http://47.104.228.220:3000/upload?"+file.name)
-            xhr.overrideMimeType("application/octet-stream")
+            // xhr.overrideMimeType("application/octet-stream")
             // xhr.sendAsBinary(reader.result)
-            formData.append('upload',file)
+            // formData.append('upload',file)
             // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
             xhr.onreadystatechange = function(){
               if(xhr.readyState === 4 && xhr.status === 200){
