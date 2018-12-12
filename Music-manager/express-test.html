@@ -4,46 +4,62 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>图片上传及下载</title>
+  <title>文件处理</title>
+
+  <style>
+    a{
+      text-decoration: none;
+    }
+    
+  </style>
 </head>
 <body>
-  <div>
-    <h1>上传和下载图片</h1>
-    <form enctype="multipart/form-data" method="post" name="fileinfo">
-      <p><input type="file" name="image"></p>
-      <p><input type="submit" value="upload file"></p>
+  <div class="upload-file">
+    <h1>文件上传</h1>
+    <form enctype="multipart/form-data" method="post" name="form-info">
+     <input type="file" name="image">
+     <input type="submit" value="点击上传">
     </form>
-    <div id='info'></div>
+
+    
   </div>
 
-  <script>
-    var form = document.forms.namedItem("fileinfo")
-    
-    console.log(form)
-    
-    form.addEventListener('submit',function(el){
-      el = el || window.event
-      el.preventDefault()
-      
-      var data = new FormData(form)
-      var file = form['image'].files[0]
-      // data.append('img',form[0].files[0])
-      console.log(file)
-      var xhr = new XMLHttpRequest()
-      xhr.open('POST','http://47.104.228.220:3000/upload?'+file.name)
-      xhr.onreadystatechange=function(el){
-        console.log("el -----")
-        console.log(el)
-        
-        if(xhr.readyState === 4 && xhr.status === 200){
-          console.log('upload successfully')
-          console.log(xhr.responseText)
-        }
-      }
-      xhr.send(data)
-      
-    });
+  <div class="upload-file">
+      <h1>文件下载</h1>
+        <input type="text" name="text" id="text">
+        <button><a href='#' download onclick=getfile() id="download">点击下载</a></button>
+      <!-- download跨域无法实现 -->
+    </div>
 
+  <script>
+    function getfile(){
+      var text = document.getElementById('text').value
+      var a = document.getElementById('download')
+      a.download = text
+      a.href = 'http://47.104.228.220:3000/download?'+text
+      
+    }
+
+    var form = document.forms['form-info']
+    form.addEventListener('submit',function(el){
+      var el = el || window.event
+      el.preventDefault()
+      var file = form['image'].files
+      // console.log(file[0])
+      if(file.length>0){
+        console.log(file[0])
+        var data = new FormData(form)
+        var xhr = new XMLHttpRequest()
+        xhr.open('POST','http://47.104.228.220:3000/upload?'+file[0].name)
+        xhr.onreadystatechange = function(){
+          if(xhr.readyState === 4 && xhr.status ===200){
+            console.log('上传成功')
+            console.log(xhr.responseText)
+          }
+        }
+        xhr.send(data)
+      }
+    })
   </script>
 </body>
 </html>
