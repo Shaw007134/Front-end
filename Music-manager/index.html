@@ -10,20 +10,22 @@
     #container{
       margin-top: 10px;
       width: 200px;
-      height: 100px;
+      height: auto;
       border-radius: 5px;
-      border: 1px dotted;
+      border: 1px dashed;
+    }
+    #container span{
+      font-size: 14px;
+    }
+    #container li{
+      height:80px; 
     }
   </style>
 </head>
 <body>
   <h1>File API Demo</h1>
 
-  <div id="container">
-    <span>Drag and drop files here to upload.</span>
-    <ul id="fileList"></ul>
-  </div>
-
+  
   <form name="demoForm" id="demoForm" method="POST"
   action="javascript:uploadAndSubmit();" enctype="multipart/form-data">
     <p>Upload File: <input type="file" name="image"></p>
@@ -36,6 +38,12 @@
   </div>
   <p><a href="http://47.104.228.220:3000/download?Attribute.png">下载</a></p>
   
+  <div id="container">
+    <span>Drag and drop files here to upload.</span>
+    <ul id="fileList"></ul>
+  </div>
+
+
   <script>
     function addDNDListeners(){ 
       var container = document.getElementById("container"); 
@@ -58,7 +66,7 @@
     window.addEventListener("load", addDNDListeners, false);
 
     function handleDrop(event){ 
-   // 获取拖拽的文件列表
+      // 获取拖拽的文件列表
       var files = event.dataTransfer.files; 
       event.stopPropagation(); 
       event.preventDefault(); 
