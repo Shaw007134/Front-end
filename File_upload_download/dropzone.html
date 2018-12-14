@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Dropzone demo</title>
+  <link rel="stylesheet" href="./assets/jquery-filer.css">
+  <link rel="stylesheet" href="./src/style.css">
+</head>
+
+<body>
+  <div class="drop-container">
+    <div class="droppable">
+      <div class="drop-inner">
+        <div class="icon-jfi-cloud-up-o"></div>
+      </div>
+      <h3 class="caption">Drag and drop files here</h3>
+      <p>or</p>
+      <div class="browse-button">
+        <span>Browse files</span>
+      </div>
+    </div>
+
+    <div class="upload-status">
+        <ul class="upload-items"></ul>
+    </div>
+  </div>
+
+ 
+
+  <script src="./dropzone.js"></script>
+  <script src="./uploadFile.js"></script>
+  <script>
+    var element = document.querySelector('.droppable');
+    function callback(files) {
+      var fileList = document.getElementsByClassName("upload-items")[0]
+      console.log(fileList)
+      if(document.getElementsByClassName("upload-items")){
+        for (var i = 0; i < files.length; i++){ 
+          var file = files[i];
+          console.log(file) 
+          var li = document.createElement('li'); 
+          var column = document.createElement('div'); 
+
+          var progress = document.createElement('div'); 
+          // var progressbar = document.createElement('progress')
+          // progressbar.min = 0
+          // progress.max = 100
+          // progressbar.innerHTML = '0% complete'
+          
+          var thumbnail = document.createElement('div'); 
+          var img = document.createElement('img'); 
+          
+          var title = document.createElement('div'); 
+          var name = document.createElement('div'); 
+          var size = document.createElement('span');
+          
+          li.setAttribute('class','upload-item')
+          column.setAttribute('class','item-column')
+          progress.setAttribute('class','item-progress'); 
+          // progress.className = "progress"; 
+          thumbnail.setAttribute('class','column-thumbnail')
+          title.setAttribute('class','column-title')
+
+          
+          if(file.type.indexOf('image')!=-1){
+            console.log(file.type.indexOf('image'))
+            img.src = window.URL.createObjectURL(files[i]); 
+            img.width = 32 
+            img.height = 32 
+          }
+          name.innerHTML = file.name; 
+          size.innerHTML = (parseInt(file.size)/1024/1024).toFixed(2).toString()+' MB'
+          
+          thumbnail.appendChild(img)
+          title.appendChild(name)
+          title.appendChild(size)
+          // progress.appendChild(progressbar)
+
+          column.appendChild(thumbnail); 
+          column.appendChild(title); 
+           
+          li.appendChild(column)
+          li.appendChild(progress)
+          fileList.appendChild(li); 
+          uploadFile.call(null,file,progress) 
+        }
+      }
+    }
+
+      // var formData = new FormData();
+      // formData.append("files", files);
+
+    //   $.ajax({
+    //     url: 'http://47.104.228.220:3000/upload?',
+    //     method: 'post',
+    //     data: formData,
+    //     processData: false,
+    //     contentType: false,
+    //     success: function(response) {
+    //       alert('Files uploaded successfully.');
+    //     }
+    //   });
+    
+    createDropzone(element, callback)
+  
+  </script>
+</body>
+</html>
