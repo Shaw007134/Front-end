@@ -56,12 +56,15 @@
           var name = document.createElement('div'); 
           var size = document.createElement('span');
           
+          var action = document.createElement('div')
+          
           li.setAttribute('class','upload-item')
           column.setAttribute('class','item-column')
           progress.setAttribute('class','item-progress'); 
           // progress.className = "progress"; 
           thumbnail.setAttribute('class','column-thumbnail')
           title.setAttribute('class','column-title')
+          action.setAttribute('class','column-action')
 
           
           if(file.type.indexOf('image')!=-1){
@@ -80,6 +83,7 @@
 
           column.appendChild(thumbnail); 
           column.appendChild(title); 
+          column.appendChild(action)
            
           li.appendChild(column)
           li.appendChild(progress)

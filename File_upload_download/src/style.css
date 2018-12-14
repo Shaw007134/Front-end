@@ -107,35 +107,7 @@ body{
   z-index: 2;
 }
 
-.upload-item .item-progress {
-  z-index: 1;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
 
-.upload-item .item-progress div{
-  position: absolute;
-  border-radius: 6px;
-  height: 100%;
-  left: 0;
-  top: 0;
-  background:rgba(104,125,219,.08);
-}
-
-.upload-item .item-progress span{
-  position: absolute;
-  right: 16px;
-  color: rgba(151,159,184,.16);
-  font-size: 48px;
-  
-}
 
 .upload-item .column-thumbnail{
   position: relative;
@@ -166,4 +138,84 @@ body{
 .upload-item .column-title span{
   font-size: 12px;
   color: #979fb8;
+}
+
+.upload-item .column-action{
+  margin: 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-item .column-action a{
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  color: #c0c6d2;
+  cursor: pointer;
+  vertical-align: top;
+}
+
+.upload-item .column-action a i{
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 50%;
+  color: #fff;
+  text-shadow: none;
+}
+
+.upload-item .column-action a .remove{
+  background: #fe7676;
+  box-shadow: -1px 1px 6px rgba(254,118,118,.8);
+}
+
+.upload-item .column-action a .success{
+  background: #43d084;
+  box-shadow: -1px 1px 6px rgba(67,208,132,.8);
+}
+
+.upload-item .column-action a .icon-jfi-times::before{
+  content: "\f316"
+}
+
+.upload-item .column-action a .icon-jfi-check::before{
+  content: "\f2f6"
+}
+
+
+.upload-item .item-progress {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.upload-item .item-progress div{
+  position: absolute;
+  border-radius: 6px;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background:rgba(104,125,219,.08);
+}
+
+.upload-item .item-progress span{
+  position: absolute;
+  right: 16px;
+  color: rgba(151,159,184,.16);
+  font-size: 48px;
+  
 }
