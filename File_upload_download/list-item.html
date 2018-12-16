@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    li{
+      list-style: none;
+      background: #d1703c;
+      color: #fff;
+      height: 2em;
+      line-height: 2em;
+      margin: 0.2em;
+      padding: 0 0.5em;
+      overflow: hidden;
+      width: 10em;
+      opacity: 1;
+    }
+    /* .hidden{
+      animation: hidden 0.5s ease-out;
+    }
+    @keyframes hidden{
+      to {
+        height: 0;
+        opacity: 0;
+      }
+    } */
+    .hidden{
+      height: 0;
+      opacity: 0;
+      transition: all 0.5s ease-out;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li>item 1</li>
+    <li>item 2</li>
+    <li>item 3</li>
+    <li>item 4</li>
+    <li>item 5</li>
+    <li>item 6</li>
+    <li>item 7</li>
+    <li>item 8</li>
+    <li>item 9</li>
+  </ul>
+
+  <script>
+    var listItems = document.getElementsByTagName('li')
+  
+    for (var i=0; i < listItems.length; i++){
+      var item = listItems[i]
+      item.addEventListener('click',function(e){
+        var target = e.currentTarget
+        target.classList.add('hidden')
+        setTimeout(()=>{
+          target.remove()
+        },500)
+      })
+    }
+  </script>
+</body>
+</html>

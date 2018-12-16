@@ -37,7 +37,6 @@ function createDropzone(element,callback){
 
 function triggerCallback(e){
   var files
-  console.log(e)
   if(e.dataTransfer){
     files = e.dataTransfer.files
   }else if(e.target){

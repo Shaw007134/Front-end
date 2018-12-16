@@ -94,11 +94,20 @@ body{
   /* margin-bottom: -16px; */
   text-align: left;
 }
+
 .upload-item{
   position: relative;
   margin: 0;
   padding: 20px 16px;
+  height: 74.6px;
+  opacity: 1;
   border-bottom: 1px solid #ebeef1;
+}
+
+.fadeout{
+  height: 0;
+  opacity: 0;
+  transition: all 0.5s ease-out;
 }
 
 .upload-item .item-column{
