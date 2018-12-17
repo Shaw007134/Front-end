@@ -73,6 +73,10 @@ function uploadSucceed(event){
   event.target.progressbar.firstChild.style.width = "100%"; 
   event.target.progressbar.lastChild.textContent = "100%"; 
   event.target.progressbar.style.display = 'none';
+  // event.target.progressbar.className = 'fadeout'
+  // setTimeout(function(){
+  //   event.target.progressbar.remove()
+  // })
   var a = event.target.a
 
   a.firstChild.className = 'success icon-jfi-check'

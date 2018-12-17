@@ -7,6 +7,7 @@
   <title>Document</title>
   <style>
     li{
+      position: relative;
       list-style: none;
       background: #d1703c;
       color: #fff;
@@ -17,6 +18,7 @@
       overflow: hidden;
       width: 10em;
       opacity: 1;
+      z-index: 2;
     }
     /* .hidden{
       animation: hidden 0.5s ease-out;
@@ -32,19 +34,74 @@
       opacity: 0;
       transition: all 0.5s ease-out;
     }
+    .inner{
+      z-index: 1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgb(145, 141, 141);
+      opacity: 0.5;
+    }
   </style>
 </head>
 <body>
   <ul>
-    <li>item 1</li>
-    <li>item 2</li>
-    <li>item 3</li>
-    <li>item 4</li>
-    <li>item 5</li>
-    <li>item 6</li>
-    <li>item 7</li>
-    <li>item 8</li>
-    <li>item 9</li>
+    <li>
+      <div class="inner">
+        <div class="i"></div>
+      </div>
+      item 1
+    </li>
+    <li>
+      <div class="inner">
+        <div class="i"></div>
+      </div>
+      item 2
+    </li>
+    <li>
+      <div class="inner">
+        <div class="i"></div>
+      </div>
+      item 3
+    </li>
+    <li>
+      <div class="inner">
+        <div class="i"></div>
+      </div>
+      item 4
+    </li>
+    <li>
+      <div class="inner">
+        <div class="i"></div>
+      </div>
+      item 5
+    </li>
+    <li>
+      <div class="inner">
+        <div class="i"></div>
+      </div>
+      item 6
+    </li>
+    <li>
+      <div class="inner">
+        <div class="i"></div>
+      </div>
+      item 7
+    </li>
+    <li>
+      <div class="inner">
+        <div class="i"></div>
+      </div>
+      item 8
+    </li>
+    <li>
+      <div class="inner">
+        <div class="i"></div>
+      </div>
+      item 9
+    </li>
   </ul>
 
   <script>

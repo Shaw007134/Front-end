@@ -99,18 +99,21 @@ body{
   position: relative;
   margin: 0;
   padding: 20px 16px;
-  height: 74.6px;
+  height: 73.6px;
   opacity: 1;
   border-bottom: 1px solid #ebeef1;
 }
 
 .fadeout{
   height: 0;
+  padding: 0;
+  margin: 0;
   opacity: 0;
   transition: all 0.5s ease-out;
 }
 
 .upload-item .item-column{
+  /* border: 1px solid darkcyan; */
   position: relative;
   display: flex;
   z-index: 2;
@@ -124,7 +127,6 @@ body{
 
 .upload-item .column-thumbnail img{
   display: block;
-  /* position: absolute; */
   background: rgba(43,56,71,.2);
   border-radius: 6px;
   cursor: pointer;
@@ -135,7 +137,8 @@ body{
   padding-left: 16px;
   padding-right: 16px;
   color: #74809d;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 .upload-item .column-title div{
   width: 100%;
