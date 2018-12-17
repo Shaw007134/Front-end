@@ -26,7 +26,7 @@ function createDropzone(element,callback){
     e.preventDefault()
     e.stopPropagation()
     element.classList.remove('dragover')
-    triggerCallback(e)
+    triggerCallback(e,callback)
   })
 
   element.addEventListener('click',function(){
@@ -35,7 +35,7 @@ function createDropzone(element,callback){
   })
 }
 
-function triggerCallback(e){
+function triggerCallback(e,callback){
   var files
   if(e.dataTransfer){
     files = e.dataTransfer.files
