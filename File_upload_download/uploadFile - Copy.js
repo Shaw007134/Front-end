@@ -1,4 +1,4 @@
-function uploadFile(file,status){ 
+function uploadFile(file,progressBar){ 
   var xhr = new XMLHttpRequest(); 
   var upload = xhr.upload; 
   var formData = new FormData()
@@ -7,8 +7,6 @@ function uploadFile(file,status){
   var div = document.createElement('div');
 
   span.textContent = "0%"; 
-
-  
   progressBar.appendChild(div);
   progressBar.appendChild(span);
   upload.progressbar = progressBar; 

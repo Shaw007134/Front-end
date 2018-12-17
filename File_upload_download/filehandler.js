@@ -44,5 +44,20 @@ function filehandler(files) {
     li.appendChild(progress)
     fileList.appendChild(li); 
   }
-  uploadFile.call(null,files) 
+
+  // var process_array = [...document.getElementsByClassName('item-progress')]
+  // var origin = progress_array.length - files.length
+  // console.log(origin)
+  // var max_queue = 2
+  // var length = files.length < max_queue ? file.length : max_queue
+  // if(files.length>max_queue){
+  //   for (var i = 1; i*max_queue < files.length; i++){
+  //     uploadFile
+  //   }
+  // }else{
+  //   var progress = process_total[origin,(origin+files.length-1)]
+  //   uploadFile(files,progress)
+  // }
+  uploadFile.call(null,files)
+
 }
