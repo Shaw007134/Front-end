@@ -42,6 +42,11 @@ function triggerCallback(e,callback){
   }else if(e.target){
     files = e.target.files
   }
-  callback.call(null,files)
+  [...files].map(item=>{
+    var temp = {"file":item,"progress":''}
+    file_array.push(temp)
+  })
+  // console.log(file_array)
+  callback.call(null,file_array)
 }
 

@@ -1,4 +1,30 @@
-function uploadFile(file,status){ 
+var max_queue = 2
+
+function set_progress(){
+  if(file_array.length>0){
+    console.log("file_array: " + file_array.length)
+    console.log("progress_array: " + process_array.length)
+    var file_array_length = file_array.length
+    var process_array_length = process_array.length
+    if(process_array_length <= max_queue){
+      var capactiy  = max_queue - process_array_length
+      if(capactiy > file_array_length){
+        capactiy = file_array_length
+      }
+      for(var i=0; i<capactiy; i++){
+        var temp_obj = file_array.shift()
+        process_array.push(temp_obj)
+        uploadFile(temp_obj)
+      }
+    }
+  }
+}
+
+
+function uploadFile(fileobj){ 
+  var file = fileobj["file"]
+  var progressBar = fileobj["progress"]
+  console.log('执行了upload: ' + file.name)
   var xhr = new XMLHttpRequest(); 
   var upload = xhr.upload; 
   var formData = new FormData()
@@ -8,17 +34,17 @@ function uploadFile(file,status){
 
   span.textContent = "0%"; 
 
-  
+
   progressBar.appendChild(div);
   progressBar.appendChild(span);
   upload.progressbar = progressBar; 
 
   var action = progressBar.previousSibling.lastChild
   var a = document.createElement('a');
-  var i = document.createElement('i');
-  i.className = 'remove icon-jfi-times'
-  i.setAttribute('title','Remove')
-  a.appendChild(i)
+  var span_a = document.createElement('span');
+  span_a.className = 'remove icon-jfi-times'
+  span_a.setAttribute('title','Remove')
+  a.appendChild(span_a)
   action.appendChild(a)
 
   upload.a = a
@@ -50,63 +76,68 @@ function uploadFile(file,status){
     // console.log('readyState :' + xhr.readyState)
     if(xhr.readyState === 4){
       if(xhr.status === 200){
-        console.log("response: "+xhr.responseText);
+        console.log(file.name + "response: "+xhr.responseText);
       }
     }
   }
   xhr.send(formData)
-}
 
 
 
-function uploadProgress(event){ 
-  if (event.lengthComputable){ 
-    // 将进度换算成百分比
-    var percentage = Math.round((event.loaded * 100) / event.total); 
-    // console.log("percentage:" + percentage); 
-    if (percentage < 100){ 
-      event.target.progressbar.firstChild.style.width = percentage + "%"; 
-      event.target.progressbar.lastChild.textContent = percentage + "%"; 
-    }  
+
+  function uploadProgress(event){ 
+    if (event.lengthComputable){ 
+      // 将进度换算成百分比
+      var percentage = Math.round((event.loaded * 100) / event.total); 
+      // console.log("percentage:" + percentage); 
+      if (percentage < 100){ 
+        event.target.progressbar.firstChild.style.width = percentage + "%"; 
+        event.target.progressbar.lastChild.textContent = percentage + "%"; 
+      }  
+    } 
   } 
-} 
 
-function uploadSucceed(event){ 
-  event.target.progressbar.firstChild.style.width = "100%"; 
-  event.target.progressbar.lastChild.textContent = "100%"; 
-  event.target.progressbar.style.display = 'none';
-  // event.target.progressbar.className = 'fadeout'
-  // setTimeout(function(){
-  //   event.target.progressbar.remove()
-  // })
-  var a = event.target.a
+  function uploadSucceed(event){ 
+    event.target.progressbar.firstChild.style.width = "100%"; 
+    event.target.progressbar.lastChild.textContent = "100%"; 
+    event.target.progressbar.style.display = 'none';
+    event.target.progressbar.className = 'fadeout'
+    setTimeout(function(){
+      event.target.progressbar.remove()
+    })
+    var a = event.target.a
 
-  a.firstChild.className = 'success icon-jfi-check'
-  a.setAttribute('title','')
-  a.addEventListener('mouseover',function(e){
-    var i = e.currentTarget.firstChild.className
-    if(i.indexOf('success')!=-1){
-      e.currentTarget.firstChild.className = 'remove icon-jfi-times'
-    }
-  })
+    a.firstChild.className = 'success icon-jfi-check'
+    a.setAttribute('title','')
+    a.addEventListener('mouseover',function(e){
+      var i = e.currentTarget.firstChild.className
+      if(i.indexOf('success')!=-1){
+        e.currentTarget.firstChild.className = 'remove icon-jfi-times'
+      }
+    })
 
-  a.addEventListener('mouseout',function(e){
-    var i = e.currentTarget.firstChild.className
-    if(i.indexOf('remove')!=-1){
-      e.currentTarget.firstChild.className = 'success icon-jfi-check'
-    }
-  })
-}
+    a.addEventListener('mouseout',function(e){
+      var i = e.currentTarget.firstChild.className
+      if(i.indexOf('remove')!=-1){
+        e.currentTarget.firstChild.className = 'success icon-jfi-check'
+      }
+    })
+    process_array.remove(fileobj)
+    set_progress()
+  }
 
 
-function uploadError(err){ 
-  console.log(err)
-}
+  function uploadError(err){ 
+    console.log(err)
+  }
 
-function uploadAbort(event){
-  var li = event.target.a.parentNode.parentNode.parentNode
-  li.classList.add('fadeout')
-  setTimeout(()=>{
-    li.remove()
-  },500)
+  function uploadAbort(event){
+    var li = event.target.a.parentNode.parentNode.parentNode
+    li.classList.add('fadeout')
+    setTimeout(()=>{
+      li.remove()
+    },500)
+    process_array.remove(fileobj)
+    set_progress()
+  }
 }

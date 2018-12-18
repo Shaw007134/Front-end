@@ -1,7 +1,8 @@
 function filehandler(files) {
   var fileList = document.getElementsByClassName("upload-items")[0]
   for (var i = 0; i < files.length; i++){ 
-    var file = files[i];
+    var fileobj = files[i];
+    var file = fileobj["file"]
     var li = document.createElement('li'); 
     var column = document.createElement('div'); 
 
@@ -25,7 +26,7 @@ function filehandler(files) {
 
     
     if(file.type.indexOf('image')!=-1){
-      img.src = window.URL.createObjectURL(files[i]); 
+      img.src = window.URL.createObjectURL(file); 
       img.width = 32 
       img.height = 32 
     }
@@ -42,22 +43,12 @@ function filehandler(files) {
       
     li.appendChild(column)
     li.appendChild(progress)
+
+    fileobj["progress"] = progress
     fileList.appendChild(li); 
   }
-
-  // var process_array = [...document.getElementsByClassName('item-progress')]
-  // var origin = progress_array.length - files.length
-  // console.log(origin)
-  // var max_queue = 2
-  // var length = files.length < max_queue ? file.length : max_queue
-  // if(files.length>max_queue){
-  //   for (var i = 1; i*max_queue < files.length; i++){
-  //     uploadFile
-  //   }
-  // }else{
-  //   var progress = process_total[origin,(origin+files.length-1)]
-  //   uploadFile(files,progress)
-  // }
-  uploadFile.call(null,files)
-
+  // var progress_array = document.getElementsByClassName('item-column')
+  // console.log('column '+progress_array.length)
+  // console.log(files)
+  set_progress.call()
 }
