@@ -40,7 +40,7 @@ function trigger(e){
   var progress_holder = document.createElement('div')
 
   var item_img = document.createElement('div')
-
+  var span_img = document.createElement('span')
   type_holder.setAttribute('class','type-holder')
   actions_holder.setAttribute('class','actions-holder')
   thumbnail_holder.setAttribute('class','thumbnail-holder')
@@ -48,7 +48,7 @@ function trigger(e){
   progress_holder.setAttribute('class','progress-holder')
 
   item_img.setAttribute('class','item-image')
-
+  span_img.setAttribute('class','action-popup')
   item_inner.appendChild(type_holder)
   item_inner.appendChild(actions_holder)
   item_inner.appendChild(thumbnail_holder)
@@ -65,7 +65,7 @@ function trigger(e){
   content_holder.appendChild(size)
   
   thumbnail_holder.appendChild(item_img)
-
+  thumbnail_holder.appendChild(span_img)
   var reader = new FileReader()
   reader.readAsDataURL(file)
   reader.onload = function(e){
@@ -73,8 +73,12 @@ function trigger(e){
     var dataurl = e.target.result
     var img = new Image()
     img.src = dataurl
-    console.log(img.width + img.height)
-    item_img.addEventListener('click',function(){
+    img.onload = function(){
+      console.log(img)
+      console.log('img.width: '+img.naturalWidth)
+      console.log('img.height: '+img.naturalHeight)
+    }
+    span_img.addEventListener('click',function(){
       preview(img,file)
     })
     item_img.appendChild(img)

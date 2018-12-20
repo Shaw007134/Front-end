@@ -69,9 +69,8 @@ function preview(img,file){
 
   title.innerHTML = file.name
   type.innerHTML = file.type.split('/')[1].toUpperCase()
-  console.log(file.type.split('/'))
   size.innerHTML = (parseInt(file.size)/1024/1024).toFixed(2).toString()+' MB'
-  dimensions.innerHTML = img.width + 'x' + img.height + 'px'
+  dimensions.innerHTML = img.naturalWidth + 'x' + img.naturalHeight + 'px'
   var cancel = document.getElementsByClassName("button-cancel")[0]
   var confirm = document.getElementsByClassName("button-confirm")[0]
 
