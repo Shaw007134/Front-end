@@ -24,11 +24,11 @@ function set_progress(){
 function uploadFile(fileobj){ 
   var file = fileobj["file"]
   var progressBar = fileobj["progress"]
-  console.log('执行了upload: ' + file.name)
+  console.log('执行了upload: ' + file)
   var xhr = new XMLHttpRequest(); 
   var upload = xhr.upload; 
   var formData = new FormData()
-  formData.append('image',file)
+  formData.append('image',file,file.name)
   var span = document.createElement('span'); 
   var div = document.createElement('div');
 
@@ -76,7 +76,7 @@ function uploadFile(fileobj){
     // console.log('readyState :' + xhr.readyState)
     if(xhr.readyState === 4){
       if(xhr.status === 200){
-        console.log(file.name + "response: "+xhr.responseText);
+        console.log(file.name + " response: "+xhr.responseText);
       }
     }
   }

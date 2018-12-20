@@ -4,7 +4,8 @@ function createDropzone(element,callback){
   input.setAttribute('multiple',true)
   input.style.display = 'none'
 
-  input.addEventListener('change',triggerCallback)
+
+  input.addEventListener('change',triggerCallback,false)
   element.appendChild(input)
 
   element.addEventListener('dragover',function(e){
@@ -26,27 +27,24 @@ function createDropzone(element,callback){
     e.preventDefault()
     e.stopPropagation()
     element.classList.remove('dragover')
-    triggerCallback(e,callback)
+    triggerCallback(e)
   })
 
-  element.addEventListener('click',function(){
+  element.addEventListener('click',function(e){
     input.value = null
     input.click()
   })
+
+  function triggerCallback(e){
+    var files
+    if(e.dataTransfer){
+      files = e.dataTransfer.files
+    }else if(e.target){
+      files = e.target.files
+    }
+    callback.call(null,Array.prototype.slice.call(files))
+  }
 }
 
-function triggerCallback(e,callback){
-  var files
-  if(e.dataTransfer){
-    files = e.dataTransfer.files
-  }else if(e.target){
-    files = e.target.files
-  }
-  [...files].map(item=>{
-    var temp = {"file":item,"progress":''}
-    file_array.push(temp)
-  })
-  // console.log(file_array)
-  callback.call(null,file_array)
-}
+
 

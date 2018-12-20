@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Blob使用示例</title>
+</head>
+<body>
+  <a download="data.txt" id="getData">下载</a>
+
+  <script>
+    var data = 'Hellow World!'
+    var blob = new Blob([data],{
+      type: 'text/html,charset=UTF-8'
+    })
+    window.URL = window.URL || window.webkitURL
+    document.querySelector("#getData").href = URL.createObjectURL(blob)
+
+    window.URL = window.URL || window.webkitURL;  // Take care of vendor prefixes.
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/path/to/image.png', true);
+    xhr.responseType = 'blob';
+
+    xhr.onload = function(e) {
+      if (this.status == 200) {
+        var blob = this.response;
+
+        var img = document.createElement('img');
+        var URL = window.URL || window.webkitURL;  //兼容处理
+        var objectUrl = URL.createObjectURL(blob);
+        img.onload = function(e) {
+          window.URL.revokeObjectURL(img.src); // 释放 url.
+        };
+
+        img.src = objectUrl;
+        document.body.appendChild(img);
+      }
+    };
+
+    xhr.send();
+  </script>
+</body>
+</html>
