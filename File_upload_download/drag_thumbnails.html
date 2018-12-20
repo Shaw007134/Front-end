@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Thumbnail_Drag demo</title>
+</head>
+<link rel="stylesheet" href="./drag_thumbnails.css">
+<link rel="stylesheet" href="./assets/jquery-filer.css">
+<link rel="stylesheet" href="./preview.css">
+<body>
+  <div class="thumbnail_drag">
+    <input type="file">
+    <div class="upload-items">
+      <ul class="items-list">
+      </ul>
+    </div>
+  </div>
+
+  <script src="./drag_thumbnails.js"></script>
+  <script src="./preview.js"></script>
+  <script>
+    var drag_thumbnails = document.getElementsByClassName('thumbnail_drag')[0]
+    createDrag_Thumbnail(drag_thumbnails)
+  </script>
+</body>
+</html>
