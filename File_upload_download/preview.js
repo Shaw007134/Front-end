@@ -73,11 +73,20 @@ function preview(img,file){
   dimensions.innerHTML = img.naturalWidth + 'x' + img.naturalHeight + 'px'
   var cancel = document.getElementsByClassName("button-cancel")[0]
   var confirm = document.getElementsByClassName("button-confirm")[0]
+  
 
   cancel.addEventListener('click',function(){
-    popup.remove()
+    // popup.style.animation = 'fadeOut .2s ease'
+    popup.className = 'fadeout'
+    setInterval(function(){
+      popup.remove()
+    },200)
   })
   confirm.addEventListener('click',function(){
-    popup.remove()
+    // popup.style.animation = 'fadeOut .2s ease-out'
+    popup.className = 'fadeout'
+    setInterval(function(){
+      popup.remove()
+    },200)
   })
 }
