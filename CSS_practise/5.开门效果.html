@@ -6,12 +6,74 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>开门大吉</title>
   <style>
+    body {
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     
+    .img_container {
+      width: 450px;
+      height: 300px;
+      margin: 100px auto;
+      position: relative;
+      background: url("img/3.jpg") no-repeat;
+      transform-style: preserve-3d;
+      perspective: 1000px;
+    }
+    .img_container .door_l,
+    .img_container .door_r {
+      background: url('./img/bg.png') repeat;
+      top:0;
+      width: 50%;
+      height: 100%;
+      position: absolute;
+      transition: all 1s;
+    }
+    
+    .door_l {
+      left: 0;
+      border: 1px solid #000;
+      transform-origin: left;
+    }
+    .door_r {
+      right: 0;
+      border: 1px solid #000;
+      transform-origin: right;
+    }
+    .door_r::before,
+    .door_l::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 10px;
+      height: 10px;
+      border: 1px solid #000;
+      border-radius: 50%;
+      color: #000;
+      transform: translateY(-50%)
+    }
+    .door_r::before {
+      left: 5px; 
+    }
+    .door_l::before {
+      right: 5px;
+    }
+    .img_container:hover .door_l {
+      transform: rotateY(-130deg);
+    }
+    .img_container:hover .door_r {
+      transform: rotateY(130deg);
+    }
   </style>
 </head>
 <body>
   <div class="img_container">
-
+    <div class="door_l"></div>
+    <!-- <img src="./img/3.jpg"> -->
+    <div class="door_r"></div>
   </div>
 </body>
 </html>
