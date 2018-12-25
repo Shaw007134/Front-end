@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>凹凸文字</title>
+
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      height: 300px;
+      width: 300px;
+      margin: 0 auto;
+      margin-top: 30px;
+      background-color: #ccc;
+      color: #ccc;
+    }
+    .container p {
+      text-align: center;
+      vertical-align: top;
+      font: 700 40px/148px "微软雅黑"
+    }
+    .container p:first-child {
+      text-shadow: 1px 1px 1px #000,-1px -1px 1px #fff;
+    }
+    .container p:last-child {
+      text-shadow: -1px -1px 1px #000,1px 1px 1px #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <p>我是凸起的文字</p>
+    <p>我是凹下的文字</p>
+  </div>
+</body>
+</html>

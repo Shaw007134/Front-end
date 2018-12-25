@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>姓名-精灵图</title>
+</head>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .clearfix:before,.clearfix:after { 
+      content:"";
+      display:table;  /* 这句话可以出发BFC BFC可以清除浮动,BFC我们后面讲 */
+    }
+    .clearfix:after {
+    clear:both;
+    }
+    .clearfix {
+      *zoom:1;
+    }
+    .name_container{
+      width: 1000px;
+      margin: 0 auto;
+      background: #FFF;
+    }
+    .name_container ul{
+      list-style: none;
+      width: 760px;
+      padding: 100px;
+      margin: 0 auto;
+    }
+    .name_container ul li{
+      height: 110px;
+      width: 113px;
+      line-height: 50px;
+      margin: 10px;
+      float: left;
+    }
+    .name_container ul li:nth-child(1){
+      background: url("./img/abcd.jpg") -255px -420px;
+    }
+    .name_container ul li:nth-child(2){
+      background: url("./img/abcd.jpg") -214px -144px;
+    }
+    .name_container ul li:nth-child(3){
+      background: url("./img/abcd.jpg") -1px -7px;
+    }
+    .name_container ul li:nth-child(4){
+      background: url("./img/abcd.jpg") -117px -562px;
+      width: 136px;
+    }
+  </style>
+<body>
+  <div class="name_container">
+    <ul class="clearfix">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+</body>
+</html>
