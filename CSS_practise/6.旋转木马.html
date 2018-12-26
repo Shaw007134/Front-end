@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>旋转木马</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    body{
+      perspective: 1000px;
+    }
+    .container{
+      transform-style: preserve-3d;
+      border: 1px solid red;
+      width: 200px;
+      height: 150px;
+      margin: 200px auto;
+      position: relative;
+      animation: rotate_pic linear 5s infinite;
+    }
+    @keyframes rotate_pic {
+      to{
+        transform: rotateY(360deg)
+      }
+    }
+    .container:hover{
+      animation-play-state: paused;
+    }
+    .bg{
+      border: 1px solid red;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      
+    }
+    .bg:nth-child(1){
+      background: url(img/rotate/pic_01.jpg) no-repeat;
+      background-size: cover;
+      transform: rotateY(0deg) translateZ(180px);
+    }
+    .bg:nth-child(2){
+      background: url(img/rotate/pic_02.jpg) no-repeat;
+      background-size: cover;
+      transform: rotateY(-60deg) translateZ(180px);
+    }
+    .bg:nth-child(3){
+      background: url(img/rotate/pic_03.jpg) no-repeat;
+      background-size: cover;
+      transform: rotateY(-120deg) translateZ(180px);
+    }
+    .bg:nth-child(4){
+      background: url(img/rotate/pic_04.jpg) no-repeat;
+      background-size: cover;
+      transform: rotateY(-180deg) translateZ(180px);
+    }
+    .bg:nth-child(5){
+      background: url(img/rotate/pic_05.jpg) no-repeat;
+      background-size: cover;
+      transform: rotateY(-240deg) translateZ(180px);
+    }
+    .bg:nth-child(6){
+      background: url(img/rotate/pic_06.jpg) no-repeat;
+      background-size: cover;
+      transform: rotateY(-300deg) translateZ(180px);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="bg"></div>
+    <div class="bg"></div>
+    <div class="bg"></div>
+    <div class="bg"></div>
+    <div class="bg"></div>
+    <div class="bg"></div>
+  </div>
+</body>
+</html>
