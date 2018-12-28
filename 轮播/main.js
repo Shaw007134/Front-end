@@ -13,6 +13,12 @@ setInterval(()=>{
   // console.log(n)
 },3000)
 
+function Init(){
+  n = 1
+  $(`.images>img:nth-child(${n})`).addClass('current')
+   .siblings().addClass('enter')
+}
+
 function getImage(n){
   return $(`.images>img:nth-child(${x(n)})`)
 }
@@ -26,12 +32,6 @@ function x(n){
   }
   // console.log(n)
   return n
-}
-
-function Init(){
-   n = 1
-   $(`.images>img:nth-child(${n})`).addClass('current')
-    .siblings().addClass('enter')
 }
 
 function makeCurrent($node){
