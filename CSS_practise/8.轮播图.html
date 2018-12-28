@@ -5,8 +5,180 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>轮播图实现</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .swiper-container{
+      max-width: 400px;
+      height: 300px;
+      margin: 0 auto;
+      margin-top: 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    .swiper-container .slides{
+      display: flex;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: all 1s ease-in-out;
+    }
+    .swiper-container .slides img{
+      height: 100%;
+    }
+    .buttons-container{
+      position: absolute;
+      bottom: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      background-color: rgba(0,0,0,0.4);
+      padding: 1px;
+      border-radius: 8px;
+    }
+    .buttons-container .button-inner{
+      width: 8px;
+      height: 8px;
+      margin: 2px;
+      border-radius: 50%;
+      background-color: rgba(255,255,255,0.5);
+      cursor: pointer;
+    }
+    .previous-next{
+      position: absolute;
+      top: 50%;
+      width: 22px;
+      line-height: 45px;
+      text-align: center;
+      transform: translateY(-50%);
+      font-family: 'icomoon';
+      color: rgba(0,0,0,0.4);
+      background-color: rgba(255, 255, 255, 0);
+      font-size: 16px;
+    }
+    .previous-next:hover{
+      background-color: rgba(255,255,255,0.4);
+      cursor: pointer;
+    }
+    .previous-next.previous{
+      left: 4px;
+    }
+    .previous::before{
+      content: "\ea40";
+    }
+    .previous-next.next{
+      right: 4px;
+    }
+    .next::before{
+      content: "\ea3c";
+    }
+    .active{
+      background-color: rgba(255,255,255)!important
+    }
+  </style>
 </head>
 <body>
-  
+  <div class="swiper-container">
+    <div class="slides">
+      <img src="./img/rotate/pic_01.jpg" alt="">
+      <img src="./img/rotate/pic_02.jpg" alt="">
+      <img src="./img/rotate/pic_03.jpg" alt="">
+      <img src="./img/rotate/pic_04.jpg" alt="">
+      <img src="./img/rotate/pic_05.jpg" alt="">
+    </div>
+    <div class="buttons-container">
+      <div class="button-inner active"></div>
+      <div class="button-inner"></div>
+      <div class="button-inner"></div>
+      <div class="button-inner"></div>
+      <div class="button-inner"></div>
+    </div>
+    <div class="previous-next previous"></div>
+    <div class="previous-next next"></div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+    var $buttons = $('.button-inner')
+    var $slides = $('.slides')
+    var $imgs = $slides.children('img')
+    var length = $buttons.length
+    var width = 400
+    var current = 0
+    makeFakeSlide()
+    $slides.css({transform:`translateX(${-width}px)`})
+
+    $('.next').on('click',function(){
+      goToSlide(current+1)
+    })
+    $('.previous').on('click',function(){
+      goToSlide(current-1)
+    })
+    $('.buttons-container').on('click','.button-inner',function(e){
+      var $button = $(e.currentTarget)
+      var index = $button.index()
+      goToSlide(index)
+    })
+    var timer = setInterval(()=>{
+      goToSlide(current+1)
+    },2000)
+
+    $('.swiper-container').on('mouseenter',function(){
+      window.clearInterval(timer)
+    }).on('mouseleave',function(){
+      timer = setInterval(function(){
+        goToSlide(current+1)
+      },2000)
+    })
+    function goToSlide(index){
+      if(index>length-1){
+        index = 0
+      }else if(index < 0){
+        index = length -1
+      }
+      if(current === 0 && index === length-1){
+        $slides.css({transform:'translateX(0px)'})
+        $slides.one('transitionend',()=>{
+          $slides.hide().offset()
+          $slides.css({transform:`translateX(${-(length*width)}px`}).show()
+        })
+      }else if(current === length-1 && index === 0){
+        $slides.css({transform:`translateX(${-(length+1)*width}px`})
+        $slides.one('transitionend',()=>{
+          $slides.hide().offset()
+          $slides.css({transform:`translateX(${-width}px`}).show()
+        })
+      }else{
+        $slides.css({transform:`translateX(${-(index+1)*width}px`})
+      }
+      current = index
+      active(index)
+    }
+    function makeFakeSlide(){
+      var $firstCopy = $imgs.eq(0).clone(true)
+      var $lastCopy = $imgs.eq(length-1).clone(true)
+      $slides.prepend($lastCopy)
+      $slides.append($firstCopy)
+    }
+    function active(index){
+      $buttons.eq(index).addClass('active').siblings().removeClass('active')
+    }
+
+    document.addEventListener('visibilitychange',function(){
+      if(document.hidden){
+        window.clearInterval(timer)
+      }else{
+        timer = setInterval(()=>{
+          goToSlide(current+1)
+        },2000)
+      }
+    })
+  </script>
 </body>
 </html>
