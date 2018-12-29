@@ -1,0 +1,103 @@
+html,
+body {
+    font-size: 100px;
+}
+
+a {
+    text-decoration: none
+}
+
+.slides-container {
+    /* 自适应样式 */
+    width: 100%;
+    /* 高度初始值 可以设置也可以去掉 */
+    /* height: 2.87rem; */
+    border: none;
+    overflow: hidden;
+    position: relative;
+}
+
+.slides {
+    position: absolute;
+    z-index: 1;
+    /* 添加过度属性 */
+    transition: all 1.5s
+}
+.slides img {
+    float: left;
+    /* 自适应宽度 */
+    width: 100%;
+    /* 高度初始值设置auto 则为图片原始值高度 100%则为容器高度，同样可以不设置 为保持兼容性 设置为佳 */
+    height: auto;
+    /* height: 200px; */
+    max-width: 100%;
+}
+
+.slides-buttons {
+    position: absolute;
+    overflow: hidden;
+    bottom: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    z-index: 100;
+}
+
+.slides-buttons span {
+    cursor: pointer;
+    float: left;
+    /* display: inline-block; */
+    border: 1px solid #fff;
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background-color: #333;
+}
+
+.slides-buttons .on {
+    background-color: orangered
+}
+
+.arrow {
+    cursor: pointer;
+    display: none;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    position: absolute;
+    /* 垂直居中 */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 50%;
+    font-size: 42px;
+    /* 不垂直居中 占满高度 */
+    /* width: .6rem;
+    font-size: .6rem;
+    height: 100%;
+    vertical-align: middle; */
+    background-color: rgba(0, 0, 0, .4);
+    z-index: 2;
+}
+
+.arrow:hover {
+    background-color: rgba(0, 0, 0, .7);
+}
+.slides-container:hover .arrow {
+    display: block;
+}
+
+.slides-prev {
+    left: 2%;
+    /* left: 0; */
+}
+
+.slides-next {
+    right: 2%
+    /* right: 0; */
+}

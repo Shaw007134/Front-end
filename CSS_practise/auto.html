@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="auto.css">
+</head>
+<body>
+    <section id="auto-play">
+      <!-- container -->
+      <div id="slides-container" class="slides-container">
+        <!-- list -->
+        <div id="slides" class="slides">
+          <!-- <a href="" id="slide"><img src="./rotate1/3.jpg" alt=""></a> -->
+          <a href="" id="slide"><img src="./rotate1/1.jpg" alt=""></a>
+          <a href="" id="slide"><img src="./rotate1/2.jpg" alt=""></a>
+          <a href="" id="slide"><img src="./rotate1/3.jpg" alt=""></a>
+          <!-- <a href="" id="slide"><img src="./rotate1/1.jpg" alt=""></a> -->
+        </div>
+        <!-- buttons -->
+        <div id="slides-buttons" class="slides-buttons">
+        </div>
+        <!-- prev -->
+        <a href="javascript:;" class="arrow slides-prev" id="slides-prev">&lt;</a>
+        <!-- next -->
+        <a href="javascript:;" class="arrow slides-next" id="slides-next">&gt;</a>
+      </div>
+    </section>
+    <script src="auto.js"></script>
+    <script>
+      var playOptions = {
+        containerID: 'slides-container',
+        slides: 'slides',
+        buttons: 'slides-buttons',
+        prev: 'slides-prev',
+        next: 'slides-next',
+        timer: null
+      };
+
+      // var timer;
+
+      window.onload = function() {
+        var slides = document.getElementById('slides')
+        var slide = slides.querySelectorAll('#slide')
+        console.log(slide)
+        var firstCopy = slide[0].cloneNode(true)
+        var lastCopy = slide[slide.length-1].cloneNode(true)
+        slides.insertBefore(lastCopy,slides.firstChild)
+        slides.appendChild(firstCopy)
+        carousel(playOptions, 2000);
+      };
+
+      window.onresize = function() {
+          clearTimeout(playOptions.timer);
+          carousel(playOptions, 2000);
+      };
+    </script>
+</body>
+</html>

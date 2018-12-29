@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>图片响应式测试</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    a {
+      text-decoration: none;
+    }
+    .container {
+      height: 300px;
+      margin-top: 100px;
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      background: url(./rotate1/2.jpg) no-repeat center top;
+      background-size: cover;
+    }
+    .slides {
+      display: block;
+      position: absolute;
+      transition: all 1.5s;
+      z-index: 1;
+    }
+    .clearfix::after{
+      content: '';
+      clear: both;
+      display: block;
+    }
+    .slides img {
+      float: left;
+      width: 100%;
+      max-height: 100%;
+    }
+    .buttons {
+      position: absolute;
+      bottom: 2%;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 20px;
+      display: flex;
+    }
+    .buttons div {
+      width: 12px;
+      height: 12px;
+      border: 1px solid #fff;
+      border-radius: 50%;
+      background-color: #333;
+      margin: 2px;
+    }
+    .buttons div.active{
+      background-color: orangered;
+    }
+    .arrow {
+      cursor: pointer;
+      display: none;
+      color: #fff;
+      text-align: center;
+      font-weight: 700;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+      border-radius: 50%;
+      font-size: 42px;
+      background-color: rgba(0,0,0,.4);
+      z-index: 2;
+    }
+    .arrow:hover{
+      background-color: rgba(0,0,0,.7);
+    }
+    .container:hover .arrow{
+      display: block;
+    }
+    .prev{
+      left: 2%;
+    }
+    .next{
+      right: 2%;
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-container" id="slides-container">
+    <div class="slides clearfix" id="slides">
+      <a href="javascript:;" class="slide" id="slide">
+        <img src="./rotate1/1.jpg" alt="">
+      </a>
+      <a href="javascript:;" class="slide" id="slide">
+        <img src="./rotate1/2.jpg" alt="">
+      </a>
+      <a href="javascript:;" class="slide" id="slide">
+        <img src="./rotate1/3.jpg" alt="">
+      </a>
+    </div>
+    <div class="slides-buttons" id="slides-buttons"></div>
+    <div class="slides-prev" id="slides-prev"></div>
+    <div class="slides-next" id="slides-next"></div>
+  </div>
+  <script src="./jquery-3.3.1.min.js"></script>
+  <script>
+    var playOptions = {
+      container: '#slides-container',
+      slides: '#slides',
+      buttons: '#slides-buttons',
+      prev: '#slides-prev',
+      next: '#slides-next',
+      timer: null
+    }
+    var container = $(playOptions.container)
+    var slides = $(playOptions.slides),
+        buttons = $(playOptions.buttons),
+        prev = $(playOptions.prev),
+        next = $(playOptions.next)
+    var timer
+    window.onload = function(){
+      makeFake(slides)
+      carousel();
+    }
+    window.onresize = function(){
+      clearInterval(timer)
+      carousel(playOptions,10)
+    }
+    function makeFake(ele){
+        var slide = $('.slide')
+        console.log(slide)
+        var firstCopy = slide.eq(0).clone(true)
+        var lastCopy = slide.eq(length-1).clone(true)
+        console.log(ele.children.length)
+
+        ele.prepend(lastCopy)
+        console.log(ele.children.length)
+
+        ele.append(firstCopy)
+        console.log(ele.children.length)
+        
+      }
+    function carousel(){
+      var animated = false,
+          index = 1
+      console.log(slides[0].children)
+      var img = $('img'),
+          length = img.length-2;
+      console.log(length)
+      var width,height
+      function responseInit() {
+        width = container.offsetWidth
+        height = parseInt(img[0].height)
+
+        slides.css({left:`${-width}px`}) 
+        slides.css({width:`${width * (length+2)}px)`})
+
+        container.css({height:`${height}px`})
+        // container.style.height = height + 'px'
+        slides.css({height:`${height}px`})
+        // slides.style.height = height + 'px'
+
+        for (var i=0; i<length+2; i++){
+          // img[i].style.width = parseInt(width) + 'px'
+          img.eq(i).css({width:`${parseInt(width)}px`})
+        }
+      }
+      responseInit()
+      
+      
+      // for(var i=0; i<size; i++){
+      //   var btn = document.createElement('div')
+      //   btn.setAttribute('index',(i+1))
+      //   if(i == 0){
+      //     btn.className = 'active'
+      //   }
+      //   buttons.appendChild(btn)
+      // }
+      // $slides.css({transform:`translateX(${-width}px)`})
+      var current = 0;
+      console.log("length: "+length)
+      timer = setInterval(()=>{
+        console.log(current)
+        goToSlide(current+1)
+      },2000)
+      function goToSlide(index){
+        if(index>length-1){
+          index = 0
+        }else if(index < 0){
+          index = length -1
+        }
+        if(current === 0 && index === length-1){
+          slides.css({transform:'translateX(0px)'})
+          slides.one('transitionend',()=>{
+            slides.hide().offset()
+            slides.css({transform:`translateX(${-(length*width)}px`}).show()
+          })
+        }else if(current === length-1 && index === 0){
+          slides.css({transform:`translateX(${-(length+1)*width}px`})
+          slides.one('transitionend',()=>{
+            slides.hide().offset()
+            slides.css({transform:`translateX(${-width}px`}).show()
+          })
+        }else{
+          slides.css({transform:`translateX(${-(index+1)*width}px`})
+        }
+        current = index
+        // active(index)
+      }
+    }
+
+
+  </script>
+</body>
+</html>
