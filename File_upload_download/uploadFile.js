@@ -55,7 +55,7 @@ function uploadFile(fileobj){
   upload.addEventListener("error", uploadError, false); 
   upload.addEventListener("abort", uploadAbort, false); 
   // 上传文件
-  xhr.open("POST", "http://47.104.228.220:3000/upload?"+file.name); 
+  xhr.open("POST", "http://47.104.228.220:8888/upload?"+file.name); 
 
   a.addEventListener('click',function(e){
     var i = e.currentTarget.firstChild.className
