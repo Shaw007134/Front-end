@@ -92,8 +92,8 @@ body{
   list-style: none;
   margin: 0 -16px;
   padding: 0;
-  max-height: 220px;
-  overflow-y: auto;
+  max-height: 210px;
+  overflow-y: scroll;
   /* margin-bottom: -16px; */
   text-align: left;
 }
@@ -237,3 +237,37 @@ body{
   font-size: 48px;
 }
 
+main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+section{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+section h3{
+  margin: 20px auto;
+}
+
+
+section article{
+  padding: 10px;
+}
+section article ol,
+section article ol li{
+  display: block;
+  list-style: none;
+  line-height: 1.5em;
+}
+
+section article ol{
+  margin: 0;
+  padding: 0;
+}

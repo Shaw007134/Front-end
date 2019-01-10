@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Dropzone demo</title>
+  <link rel="stylesheet" href="./assets/jquery-filer.css">
+  <link rel="stylesheet" href="./src/style.css">
+  <link rel="stylesheet" href="./drag_thumbnails.css">
+  <link rel="stylesheet" href="./preview.css">
+</head>
+
+<body>
+
+  <main>
+    <h3>Drag and Drop uploader</h3>
+    <section>
+        <div class="drop-container">
+          <div class="droppable">
+            <div class="drop-inner">
+              <div class="icon-jfi-cloud-up-o"></div>
+            </div>
+            <h3 class="caption">Drag and drop files here</h3>
+            <p>or</p>
+            <div class="browse-button">
+              <span>Browse files</span>
+            </div>
+          </div>
+      
+          <div class="upload-status">
+              <ul class="upload-items"></ul>
+          </div>
+        </div>
+        <article>
+          This uploader has the following features:
+          <ol>
+            <li>1. You can set how many files you want to upload at the same time</li>
+            <li>2. It has integrated the picture compression options and the preview function</li>
+            <li>3. You can drop an uploading items anytime</li>
+          </ol>
+        </article>
+    </section>
+  
+    <h3>Thumbnails uploader</h3>
+    <section>
+      <div class="thumbnail_drag">
+        <input type="file">
+        <div class="upload-items">
+          <ul class="items-list">
+          </ul>
+        </div>
+      </div>
+      <article>
+        This uploader has the following features:
+        <ol>
+          <li>1. You can see the thumbnail of the files once uploaded</li>
+          <li>2. It has integrated the picture compression options</li>
+          <li>3. Responsive design, you can click the pictures, to get the previews</li>
+        </ol>
+      </article>
+    </section>
+  </main>
+
+
+  <script src="./uploadFile.js"></script>
+  <script src="./filehandler.js"></script>
+  <script src="./dropzone.js"></script>
+  <script src="./drag_thumbnails.js"></script>
+  <script src="./preview.js"></script>
+  
+  <script>
+    Array.prototype.indexOf = function(val) {
+      for (var i = 0; i < this.length; i++) {
+        if (this[i] == val) return i;
+      }
+      return -1;
+    };
+    Array.prototype.remove = function(val) {
+      var index = this.indexOf(val);
+      if (index > -1) {
+        this.splice(index, 1);
+      }
+    };
+
+    var element = document.querySelector('.droppable');
+    var file_array = []
+    var process_array = []
+    createDropzone(element,filehandler)
+
+    var drag_thumbnails = document.getElementsByClassName('thumbnail_drag')[0]
+    createDrag_Thumbnail(drag_thumbnails)
+  </script>
+</body>
+</html>

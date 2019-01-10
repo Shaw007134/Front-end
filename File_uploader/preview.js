@@ -77,14 +77,14 @@ function preview(img,file){
 
   cancel.addEventListener('click',function(){
     // popup.style.animation = 'fadeOut .2s ease'
-    popup.className = 'fadeout'
+    popup.classList.add('fadeOut') 
     setInterval(function(){
       popup.remove()
     },200)
   })
   confirm.addEventListener('click',function(){
     // popup.style.animation = 'fadeOut .2s ease-out'
-    popup.className = 'fadeout'
+    popup.classList.add('fadeOut') 
     setInterval(function(){
       popup.remove()
     },200)

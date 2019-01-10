@@ -123,6 +123,11 @@ function uploadFile(fileobj){
       }
     })
     process_array.remove(fileobj)
+
+    var li = event.target.a.parentNode.parentNode.parentNode
+    var ul = li.parentNode
+    ul.scrollTop = li.offsetTop - 175;
+
     set_progress()
   }
 
