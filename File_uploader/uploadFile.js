@@ -28,7 +28,7 @@ function uploadFile(fileobj){
   var xhr = new XMLHttpRequest(); 
   var upload = xhr.upload; 
   var formData = new FormData()
-  formData.append('image',file,file.name)
+  formData.append('file',file,file.name)
   var span = document.createElement('span'); 
   var div = document.createElement('div');
 

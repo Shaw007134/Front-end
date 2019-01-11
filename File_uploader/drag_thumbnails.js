@@ -122,7 +122,7 @@ function sendFile(){
     var xhr = new XMLHttpRequest()
     var upload = xhr.upload
     var formData = new FormData()
-    formData.append("image",file)
+    formData.append("file",file,file.name)
     xhr.open("POST","http://47.104.228.220:3000/upload?"+file.name)
     xhr.onreadystatechange = function(){
       if(xhr.readyState === 4 && xhr.status === 200){
