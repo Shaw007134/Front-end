@@ -1,6 +1,6 @@
 // var Prism = require('prismjs')
 
-var data1 =`
+var data1 = `
   /* 
  * 面试官你好，我是XXX
  * 只用文字作做我介绍太单调了
@@ -35,14 +35,13 @@ html{
 }
 /* 于是我就可以在白纸上写字了，请看右边 */
 
-`
+`;
 
-var data2 =`
+var data2 = `
 /* 接下来用一个优秀的库 marked.js
  * 把 Markdown 变成 HTML
  */
-`
-
+`;
 
 var md = `
 # 自我介绍
@@ -89,40 +88,41 @@ XXX 学校毕业
 - QQ xxxxxxxx
 - Email xxxxxxxx
 - 手机 xxxxxxx
-`
+`;
 let css3 = `
 /*
  * 这就是我的会动的简历
  * 谢谢观看
  */
-`
+`;
 
-
-function write(data, id, type, highlight){
-  return new Promise((resolve)=>{
-    console.log("write to "+id)
-    var i = 0
-    id = $(id)
-    if(highlight){
-      let timer = setInterval(()=>{
-        id.html(Prism.highlight(data.substr(0,i),window['Prism'].languages[type]))
-        id.scrollTop(id[0].scrollHeight)
-        i = i+1
-        if(i>data.length){
-          clearInterval(timer)
-          resolve.call()
+function write(data, id, type, highlight) {
+  return new Promise(resolve => {
+    console.log("write to " + id);
+    var i = 0;
+    id = $(id);
+    if (highlight) {
+      let timer = setInterval(() => {
+        id.html(
+          Prism.highlight(data.substr(0, i), window["Prism"].languages[type])
+        );
+        id.scrollTop(id[0].scrollHeight);
+        i = i + 1;
+        if (i > data.length) {
+          clearInterval(timer);
+          resolve.call();
         }
-      },10)
-    }else{
-      let timer = setInterval(()=>{
-        id.html(data.substr(0,i))
-        id.scrollTop(id[0].scrollHeight)
-        i = i+1
-        if(i>data.length){
-          clearInterval(timer)
-          resolve.call()
+      }, 10);
+    } else {
+      let timer = setInterval(() => {
+        id.html(data.substr(0, i));
+        id.scrollTop(id[0].scrollHeight);
+        i = i + 1;
+        if (i > data.length) {
+          clearInterval(timer);
+          resolve.call();
         }
-      },10)
+      }, 10);
     }
 
     // function write_highlight(code){
@@ -145,29 +145,27 @@ function write(data, id, type, highlight){
     //     }
     //   },10)
     // }
-
-  })
-  // return new Promise(resolve)  
+  });
+  // return new Promise(resolve)
 }
 
-
-
-function createPaper(){
-  return new Promise((resolve)=>{
-    var paper = document.createElement('div') 
-    paper.id = 'paper'
-    var content = document.createElement('pre')
-    content.className = 'content'
-    content.id = 'content'
-    paper.appendChild(content)
-    document.body.appendChild(paper)
-    resolve.call()
-  })
+function createPaper() {
+  return new Promise(resolve => {
+    var paper = document.createElement("div");
+    paper.id = "paper";
+    var content = document.createElement("pre");
+    content.className = "content";
+    content.id = "content";
+    paper.appendChild(content);
+    document.body.appendChild(paper);
+    resolve.call();
+  });
 }
 
-write(data1,"#code",'css',true)
-write(data1,"#style_m",'css','').then(
-  createPaper).then(write(md,"#content",'markup',true))
+write(data1, "#code", "css", true);
+write(data1, "#style_m", "css", "")
+  .then(createPaper)
+  .then(write(md, "#content", "markup", true));
 // var write_css = write(data1,"#style_m")
 // write(data1,"#code",'css',true)
 // write(data1,"#style_m",'css','',()=>{
@@ -175,7 +173,3 @@ write(data1,"#style_m",'css','').then(
 //     write(md,"#content",'markup',true)
 //   })
 // })
-
-
-
-

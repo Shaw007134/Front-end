@@ -1,6 +1,6 @@
 // var Prism = require('prismjs')
 
-var data1 =`
+var data1 = `
   /* 
  * 面试官你好，我是XXX
  * 只用文字作做我介绍太单调了
@@ -37,12 +37,11 @@ html{
 
 `
 
-var data2 =`
+var data2 = `
 /* 接下来用一个优秀的库 marked.js
  * 把 Markdown 变成 HTML
  */
 `
-
 
 var md = `
 # 自我介绍
@@ -97,45 +96,40 @@ let css3 = `
  */
 `
 
-
-function write(data, id, type, highlight,fun){
-  console.log("write to "+id)
+function write (data, id, type, highlight, fun) {
+  console.log('write to ' + id)
   var i = 0
   id = $(id)
-  if(highlight){
-    settime(data,write_highlight,id,fun)
-  }else{
-    settime(data,write_plain,id,fun)
+  if (highlight) {
+    settime(data, write_highlight, id, fun)
+  } else {
+    settime(data, write_plain, id, fun)
   }
 
+  function write_highlight (code) {
+    id.html(Prism.highlight(code, window['Prism'].languages[type]))
+  }
 
-    function write_highlight(code){
-      id.html(Prism.highlight(code,window['Prism'].languages[type]))
-    }
+  function write_plain (code) {
+    id.html(code)
+  }
 
-    function write_plain(code){
-      id.html(code)
-    }
-
-    function settime(data,fun,id,resolve){
-      var i = 0
-      let timer = setInterval(()=>{
-        fun(data.substr(0,i))
-        id.scrollTop(id[0].scrollHeight)
-        i = i+1
-        if(i>data.length){
-          clearInterval(timer)
-          resolve && resolve.call()
-        }
-      },10)
-    }
+  function settime (data, fun, id, resolve) {
+    var i = 0
+    let timer = setInterval(() => {
+      fun(data.substr(0, i))
+      id.scrollTop(id[0].scrollHeight)
+      i = i + 1
+      if (i > data.length) {
+        clearInterval(timer)
+        resolve && resolve.call()
+      }
+    }, 10)
+  }
 }
 
-
-
-
-function createPaper(resolve){
-  var paper = document.createElement('div') 
+function createPaper (resolve) {
+  var paper = document.createElement('div')
   paper.id = 'paper'
   var content = document.createElement('pre')
   content.className = 'content'
@@ -149,13 +143,9 @@ function createPaper(resolve){
 // write(data1,"#style_m",'css','').then(
 //   createPaper().then(write(md,"#content",'markup',true)))
 // var write_css = write(data1,"#style_m")
-write(data1,"#code",'css',true)
-write(data1,"#style_m",'css','',()=>{
-  createPaper(()=>{
-    write(md,"#content",'markup',true)
+write(data1, '#code', 'css', true)
+write(data1, '#style_m', 'css', '', () => {
+  createPaper(() => {
+    write(md, '#content', 'markup', true)
   })
 })
-
-
-
-
