@@ -1,3 +1,59 @@
-export class Birds {
-  
+import { Sprite } from "../base/Sprite.js";
+// 循环渲染三只小鸟，canvas其实是渲染图片的剪裁部分
+export class Birds extends Sprite {
+  constructor() {
+    const image = Sprite.getImage("birds");
+    super(
+      image,
+      0,
+      0,
+      image.width,
+      image.height,
+      0,
+      0,
+      image.width,
+      image.height
+    );
+    // 用数组存储小鸟的三种状态, 小鸟的宽为34，上下边距为10，左右为9
+    this.clippingX = [9, 9 + 34 + 18, 9 + 34 + 18 + 18];
+    this.clippingY = [10, 10, 10];
+    this.clippingWidth = [34, 34, 34];
+    this.clippingHeight = [24, 24, 24];
+
+    this.birdX = window.innerWidth / 4;
+    this.birdsX = [this.birdX, this.birdX, this.birdX];
+    this.birdY = window.innerHeight / 2;
+    this.birdsY = [this.birdY, this.birdY, this.birdY];
+
+    this.birdsWidth = this.clippingWidth;
+    this.birdsHeight = this.clippingHeight;
+
+    this.y = this.birdsY;
+    this.index = 0;
+    this.count = 0;
+    this.time = 0;
+  }
+  draw() {
+    // 切换三只小鸟的速度
+    const speed = 0.2;
+    this.count = this.count + speed;
+    // 0,1,2
+    if (this.index >= 2) {
+      this.count = 0;
+    }
+    // 减速器的作用
+    this.index = Math.floor(this.count);
+    console.log(this.index);
+    super.draw(
+      this.image,
+      this.clippingX[this.index],
+      this.clippingY[this.index],
+      this.clippingWidth[this.index],
+      this.clippingHeight[this.index],
+      this.birdsX[this.index],
+      this.birdsY[this.index],
+      this.birdsWidth[this.index],
+      this.birdsHeight[this.index]
+    );
+  }
 }

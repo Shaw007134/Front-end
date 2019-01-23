@@ -46,7 +46,8 @@ export class Main {
     this.dataStore
       .put("background", BackGround)
       .put("land", Land)
-      .put("pencils", []);
+      .put("pencils", [])
+      .put("birds", Birds);
     // 游戏开始前创建第一组铅笔
     this.director.createPencil();
     this.director.run();

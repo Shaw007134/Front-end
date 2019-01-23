@@ -44,6 +44,8 @@ export class Director {
       });
 
       this.dataStore.get("land").draw();
+      this.dataStore.get("birds").draw();
+
       // 与setTimeout与setTimeIterval等相比，其刷新率是由浏览器决定的
       // 每一次会在浏览器的帧率刷新之前执行，性能远比上述两者高
       let timer = requestAnimationFrame(() => {
