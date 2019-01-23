@@ -15,7 +15,7 @@ export class Main {
     const loader = ResourceLoader.create();
     loader.onLoaded(map => this.onResourceFirstLoaded(map));
 
-    Director.getInstance();
+    this.director = Director.getInstance();
 
     let image = new Image();
     image.src = "../res/background.png";
@@ -41,8 +41,14 @@ export class Main {
     this.init();
   }
   init() {
-    // es6中,class是作为function存在的，类的变量，方法就是原型链中方法和类
-    this.dataStore.put("background", BackGround).put("land", Land);
-    Director.getInstance().run();
+    // es6中,class是作为function存在的，类的变量、方法就是原型链中方法和类
+    this.director.isGameOver = false;
+    this.dataStore
+      .put("background", BackGround)
+      .put("land", Land)
+      .put("pencils", []);
+    // 游戏开始前创建第一组铅笔
+    this.director.createPencil();
+    this.director.run();
   }
 }
