@@ -12,8 +12,7 @@ export class Director {
     return Director.instance;
   }
   run() {
-    console.log("开始执行");
-    const backgroundSprite = this.dataStore.get("background");
-    backgroundSprite.draw();
+    this.dataStore.get("background").draw();
+    this.dataStore.get("land").draw();
   }
 }

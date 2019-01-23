@@ -1,3 +1,35 @@
-export class Land {
-  
+import { Sprite } from "../base/Sprite.js";
+
+export class Land extends Sprite {
+  constructor() {
+    const image = Sprite.getImage("land");
+    super(
+      image,
+      0,
+      0,
+      image.width,
+      image.height,
+      0,
+      window.innerHeight - image.height,
+      image.width,
+      image.height
+    );
+    this.landX = 0;
+    this.landSpeed = 2;
+  }
+
+  draw() {
+    this.landX = this.landX + this.landSpeed;
+    super.draw(
+      this.img,
+      this.srcX,
+      this.srcY,
+      this.srcW,
+      this.srcH,
+      -this.landX,
+      this.y,
+      this.width,
+      this.height
+    );
+  }
 }

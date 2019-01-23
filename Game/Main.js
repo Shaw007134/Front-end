@@ -42,7 +42,7 @@ export class Main {
   }
   init() {
     // es6中,class是作为function存在的，类的变量，方法就是原型链中方法和类
-    this.dataStore.put("background", BackGround);
+    this.dataStore.put("background", BackGround).put("land", Land);
     Director.getInstance().run();
   }
 }
