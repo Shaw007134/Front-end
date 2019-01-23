@@ -38,7 +38,7 @@ export class Birds extends Sprite {
     const speed = 0.2;
     this.count = this.count + speed;
     // 0,1,2
-    if (this.index >= 2) {
+    if (this.count >= 2) {
       this.count = 0;
     }
     // 减速器的作用
