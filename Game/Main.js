@@ -1,5 +1,6 @@
 import { ResourceLoader } from "./js/base/ResourceLoader.js";
 import { Director } from "./js/Director.js";
+import { BackGround } from "./js/runtime/BackGround.js";
 
 export class Main {
   constructor() {
@@ -28,6 +29,6 @@ export class Main {
     // drawImage负责将位图资源进行剪裁缩放，并且放置到画布上，并进行渲染
   }
   onResourceFirstLoaded(map) {
-    console.log(map);
+    let background = new Back
   }
 }
