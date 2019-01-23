@@ -1,9 +1,10 @@
 import { Sprite } from "../base/Sprite.js";
 
 export class BackGround extends Sprite {
-  constructor(ctx, image) {
+  constructor() {
+    const image = Sprite.getImage("background");
+    // super上面不能用this，故换用类的静态方法获取属性
     super(
-      ctx,
       image,
       0,
       0,

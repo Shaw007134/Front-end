@@ -1,6 +1,7 @@
+import { DataStore } from "../base/DataStore.js";
+
 export class Sprite {
   constructor(
-    ctx = null,
     img = null,
     srcX = 0,
     srcY = 0,
@@ -11,7 +12,8 @@ export class Sprite {
     width = 0,
     height = 0
   ) {
-    this.ctx = ctx;
+    this.dataStore = DataStore.getInstance();
+    this.ctx = this.dataStore.ctx;
     this.img = img;
     this.srcX = srcX;
     this.srcY = srcY;
@@ -23,6 +25,11 @@ export class Sprite {
     this.height = height;
   }
 
+  static getImage(key) {
+    return DataStore.getInstance().res.get(key);
+  }
+  // 由于ES6没有方法重载的特性，使用默认参数加变量实现
+  // 写东西要一步一步去完善基类，基础框架
   draw(
     img = this.img,
     srcX = this.srcX,
