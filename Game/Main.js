@@ -48,7 +48,8 @@ export class Main {
       .put("land", Land)
       .put("pencils", [])
       .put("birds", Birds)
-      .put("startButton", StartButton);
+      .put("startButton", StartButton)
+      .put("score", Score);
     this.registerEvent();
     // 游戏开始前创建第一组铅笔
     this.director.createPencil();

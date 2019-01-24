@@ -44,9 +44,9 @@ export class Birds extends Sprite {
     // 减速器的作用
     this.index = Math.floor(this.count);
     // 模拟重力加速度
-    const g = 0.98 / 2.4;
+    const g = 0.98 / 3;
     // 向上移动一点
-    const offsetUp = 8;
+    const offsetUp = 6;
     const offsetY = (g * this.time * this.time - offsetUp) / 2;
     for (let i = 0; i <= 2; i++) {
       this.birdsY[i] = this.y[i] + offsetY;
