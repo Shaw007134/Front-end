@@ -48,8 +48,22 @@ export class Main {
       .put("land", Land)
       .put("pencils", [])
       .put("birds", Birds);
+    this.registerEvent();
     // 游戏开始前创建第一组铅笔
     this.director.createPencil();
     this.director.run();
+  }
+
+  registerEvent() {
+    this.canvas.addEventListener("touchstart", e => {
+      e.preventDefault();
+      if (this.director.isGameOver) {
+        console.log("游戏开始");
+        this.init();
+      } else {
+        console.log("点击了");
+        this.director.birdsEvent();
+      }
+    });
   }
 }
