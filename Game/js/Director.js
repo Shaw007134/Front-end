@@ -1,7 +1,6 @@
 import { DataStore } from "./base/DataStore.js";
 import { UpPencil } from "./runtime/UpPencil.js";
 import { DownPencil } from "./runtime/DownPencil.js";
-import { Score } from "./player/Score.js";
 // 统管所有的逻辑，进行运行，销毁，创建
 export class Director {
   // 基于ES6实现案例模式
@@ -18,8 +17,8 @@ export class Director {
 
   // 思考用什么数据结构存储不断创建和销毁的铅笔 -- 数组
   createPencil() {
-    const minTop = window.innerHeight / 8;
-    const maxTop = window.innerHeight / 2;
+    const minTop = DataStore.getInstance().canvas.height / 8;
+    const maxTop = DataStore.getInstance().canvas.height / 2;
     const top = minTop + Math.random() * (maxTop - minTop);
     this.dataStore.get("pencils").push(new UpPencil(top));
     this.dataStore.get("pencils").push(new DownPencil(top));
@@ -75,7 +74,6 @@ export class Director {
         pin: [70, 25]
       };
       if (Director.isStrike(birdsBorder, pencilBorder)) {
-        console.log(i);
         console.log("撞到铅笔了");
         this.isGameOver = true;
         return;
@@ -102,7 +100,8 @@ export class Director {
         this.dataStore.get("score").isScore = true;
       }
       if (
-        pencils[0].x <= (window.innerWidth - pencils[0].width) / 2 &&
+        pencils[0].x <=
+          (DataStore.getInstance().canvas.width - pencils[0].width) / 2 &&
         pencils.length === 2
       ) {
         this.createPencil();

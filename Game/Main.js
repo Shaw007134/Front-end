@@ -36,6 +36,7 @@ export class Main {
   }
   onResourceFirstLoaded(map) {
     // 需要长期保存的放到instance的原型链中，初始化进行一次
+    this.dataStore.canvas = this.canvas;
     this.dataStore.ctx = this.ctx;
     this.dataStore.res = map;
     this.init();
@@ -63,7 +64,6 @@ export class Main {
         console.log("游戏开始");
         this.init();
       } else {
-        console.log("点击了");
         this.director.birdsEvent();
       }
     });

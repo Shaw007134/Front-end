@@ -13,8 +13,8 @@ export class Score {
     this.ctx.fillStyle = "#ffcbeb";
     this.ctx.fillText(
       this.scoreNumber,
-      window.innerWidth / 2,
-      window.innerHeight / 18,
+      DataStore.getInstance().canvas.width / 2,
+      DataStore.getInstance().canvas.height / 18,
       1000
     );
     // 1000为限定最大大小
