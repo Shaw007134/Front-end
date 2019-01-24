@@ -31,14 +31,51 @@ export class Director {
     this.dataStore.get("birds").time = 0;
   }
 
+  // 判断是否和铅笔撞击
+  static isStrike(bird, pencil) {
+    let s = false;
+    if (
+      bird.top > pencil.bottom - 12 ||
+      bird.bottom < pencil.top - 12 ||
+      bird.right < pencil.left + 12 ||
+      bird.left > pencil.right - 12
+    ) {
+      s = true;
+    }
+    return !s;
+  }
   // 判断小鸟是否撞击地板和铅笔
   check() {
     const birds = this.dataStore.get("birds");
     const land = this.dataStore.get("land");
+    const pencils = this.dataStore.get("pencils");
     // 地板的撞击判断
     if (birds.birdsY[0] + birds.birdsHeight[0] >= land.y) {
       console.log("撞击地板");
       this.isGameOver = true;
+    }
+
+    const birdsBorder = {
+      top: birds.y[0],
+      bottom: birds.birdsY[0] + birds.birdsHeight[0],
+      left: birds.birdsX[0],
+      right: birds.birdsX[0] + birds.birdsWidth[0]
+    };
+
+    const length = pencils.length;
+    for (let i = 0; i < length; i++) {
+      const pencil = pencils[i];
+      const pencilBorder = {
+        top: pencil.y,
+        bottom: pencil.y + pencil.height,
+        left: pencil.x,
+        right: pencil.x + pencil.width
+      };
+      if (Director.isStrike(birdsBorder, pencilBorder)) {
+        console.log("撞到铅笔了");
+        this.isGameOver = true;
+        return;
+      }
     }
   }
 
@@ -74,6 +111,7 @@ export class Director {
       // cancelAnimationFrame(this.dataStore.get("timer"));
     } else {
       console.log("游戏结束");
+      this.dataStore.get("startButton").draw();
       cancelAnimationFrame(this.dataStore.get("timer"));
       this.dataStore.destroy();
     }
