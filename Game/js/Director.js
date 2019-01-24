@@ -35,61 +35,15 @@ export class Director {
   // 判断是否和铅笔撞击
   static isStrike(bird, pencil) {
     let s = false;
-
-    console.log(
-      "1: " +
-        (pencil.top < 0 &&
-          bird.top < pencil.bottom - pencil.pin[0] &&
-          bird.right > pencil.left)
-    );
-
-    console.log(
-      "2: " +
-        (pencil.top > 0 &&
-          bird.bottom > pencil.top + pencil.pin[0] &&
-          bird.right > pencil.left)
-    );
-    console.log(
-      "3: " +
-        (pencil.top < 0 &&
-          pencil.bottom > bird.top > pencil.bottom - pencil.pin[0] &&
-          isEdge(bird, pencil, "top"))
-    );
-    console.log(
-      "4: " +
-        (pencil.top > 0 &&
-          pencil.top > bird.bottom > pencil.top - pencil.pin[0] &&
-          isEdge(bird, pencil, "bottom"))
-    );
     if (
-      (pencil.top < 0 &&
-        bird.top < pencil.bottom - pencil.pin[0] &&
-        bird.right > pencil.left) ||
-      (pencil.top > 0 &&
-        bird.bottom > pencil.top + pencil.pin[0] &&
-        bird.right > pencil.left) ||
-      (pencil.bottom > bird.top > pencil.bottom - pencil.pin[0] &&
-        isEdge(bird, pencil, "top")) ||
-      (pencil.top > bird.bottom > pencil.top - pencil.pin[0] &&
-        isEdge(bird, pencil, "bottom"))
+      bird.top > pencil.bottom ||
+      bird.bottom < pencil.top ||
+      bird.right < pencil.left ||
+      bird.left > pencil.right
     ) {
       s = true;
     }
-    function isEdge(bird, pencil, pos) {
-      const marginH =
-        bird.right - pencil.left - (pencil.right - pencil.left) / 2;
-      let marginV;
-      if (pos === "top") {
-        marginV = ((-bird.top + pencil.bottom) * pencil.pin[1]) / pencil.pin[0];
-      } else {
-        marginV = ((bird.bottom - pencil.top) * pencil.pin[1]) / pencil.pin[0];
-      }
-      console.log(marginH);
-      console.log(marginV);
-      if (marginH < 0) return bird.right > pencil.left + marginV;
-      else return bird.left < pencil.right - marginV;
-    }
-    return s;
+    return !s;
   }
   // 判断小鸟是否撞击地板和铅笔
   check() {
