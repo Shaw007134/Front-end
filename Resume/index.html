@@ -1,352 +1,413 @@
 <!DOCTYPE html>
 <html lang="zh-Hans">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Shengyi's Resume</title>
-  <link rel="stylesheet" href="./main.css">
-  <script src="//at.alicdn.com/t/font_773977_69a3vgvy7o4.js"></script>
-  <style type="text/css">
-    .icon {
-       width: 1em; height: 1em;
-       vertical-align: -0.15em;
-       fill: currentColor;
-       overflow: hidden;
-    }
-    .loading{width: 200px; height: 200px; position: relative;}
-    .loading::before, .loading::after{content:'';position: absolute;width: 0px; height: 0px; 
-      background: #000;border-radius: 50%;
-      top: 0; left:0; bottom:0;right: 0;
-      margin: auto; animation: s 1.5s linear infinite;
-    }
-    .loading::after{animation-delay: 0.75s;}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Shengyi's Resume</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.0/css/swiper.min.css"
+    />
+    <link rel="stylesheet" href="./main.css" />
+    <script src="//at.alicdn.com/t/font_773977_69a3vgvy7o4.js"></script>
+  </head>
 
-    @keyframes s {
-      0%{width: 0px; height: 0px; opacity: 1;}
-      100%{width: 100px; height: 100px; opacity:0;}
-    }
-    .site-welcome{display: none; position: fixed;
-      top:0; left:0; width: 100%; height: 100%;
-      background: #888;
-      z-index: 1;justify-content: center; align-items: center;
-    }
-    .site-welcome.active{display:flex;}
-  </style>
-</head>
-
-<body>
-  <!-- <div id="siteWelcome" class="site-welcome active">
-    <div class="loading"></div>
-  </div> -->
-  <div id="topNavBar" class="topNavBar">
-    <div class="topNavBar-inner clearfix">
-      <!-- <a class="logo" href="#" style="float: left">
-        <span class=""></span><span class="card"> card</span>
-      </a> -->
-      <nav class="menu" style="float: right">
-        <ul class="clearfix">
-          <li><a href="#siteAbout">ABOUT</a></li>
-          <li><a href="#siteSkills">SKILLS</a></li>
-          <li>
-            <a href="#siteWorks">WORKS</a>
-            <ul class="submenu">
-              <li class="hvr-back-pulse"><a href="http://syizhang.com/Front-end/Keyboard/" target="_blank">Navigation keyboard</a></li>
-              <li class="hvr-back-pulse"><a id="canvas" href="http://syizhang.com/Front-end/Canvas/" target="_blank">Mobile Canvas</a></li>
-              <li class="hvr-back-pulse"><a id="python" href="http://syizhang.com/Front-end/Data_Analysis/" target="_blank">Python related</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="https://www.jianshu.com/u/b31f2307ea91" target="_blank">BLOG</a>
-            <!-- <ul class="submenu">
-              <li>博客1</li>
-              <li>博客2</li>
-              <li>博客3</li>
-            </ul> -->
-          </li>
-          <li><a href="#contact">CONTACT</a></li>
-          <!-- <li><a href="#">OTHER</a></li> -->
-          <li><a href="https://learning-record.herokuapp.com/" target="_blank">Learning Log System</a></li>
-        </ul>
-      </nav>
+  <body>
+    <div id="topNavBar" class="topNavBar">
+      <div class="topNavBar-inner clearfix">
+        <nav class="menu" style="float: right">
+          <ul class="clearfix">
+            <li><a href="#siteAbout">ABOUT</a></li>
+            <li><a href="#siteSkills">SKILLS</a></li>
+            <li>
+              <a href="#siteWorks">WORKS</a>
+              <ul class="submenu">
+                <li class="hvr-back-pulse">
+                  <a href="http://syizhang.com/Front-end/Game/" target="_blank"
+                    >Flappy Bird</a
+                  >
+                </li>
+                <li class="hvr-back-pulse">
+                  <a
+                    href="http://47.104.228.220:9000/#/recommend"
+                    target="_blank"
+                    >Music Player-Vue</a
+                  >
+                </li>
+                <li class="hvr-back-pulse">
+                  <a
+                    href="http://47.104.228.220:9001/#/recommend"
+                    target="_blank"
+                    >Instant Messaging-React</a
+                  >
+                </li>
+                <li class="hvr-back-pulse">
+                  <a
+                    href="http://syizhang.com/Front-end/Keyboard/"
+                    target="_blank"
+                    >Navigation keyboard</a
+                  >
+                </li>
+                <li class="hvr-back-pulse">
+                  <a
+                    id="canvas"
+                    href="http://syizhang.com/Front-end/Canvas/"
+                    target="_blank"
+                    >Mobile Canvas</a
+                  >
+                </li>
+                <li class="hvr-back-pulse">
+                  <a
+                    id="python"
+                    href="http://syizhang.com/Front-end/Data_Analysis/"
+                    target="_blank"
+                    >Python related</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="https://www.jianshu.com/u/b31f2307ea91" target="_blank"
+                >BLOG</a
+              >
+            </li>
+            <li><a href="#contact">CONTACT</a></li>
+            <!-- <li><a href="#">OTHER</a></li> -->
+            <li>
+              <a href="https://learning-record.herokuapp.com/" target="_blank"
+                >Learning Log System</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
-  </div>
-  <div class="banner">
-    <div class="mask"></div>
-  </div>
-  <main style="margin-top: -340px">
-    <div data-x id="siteAbout" class="userCard">
-      <div class="pictureAndText clearfix">
+    <div class="banner">
+      <div class="mask"></div>
+    </div>
+    <main style="margin-top: -340px">
+      <div data-x id="siteAbout" class="userCard">
+        <div class="pictureAndText clearfix">
           <div class="picture">
-            <img src="Img/rs-photo-v1.jpg" alt="头像" width="261" height="347">
+            <img
+              src="Img/rs-photo-v1.jpg"
+              alt="头像"
+              width="261"
+              height="347"
+            />
           </div>
-        
+
           <div class="text">
-            <span class="welcome">Hello
+            <span class="welcome"
+              >Hello
               <span class="tri"></span>
             </span>
             <h1>Shaw</h1>
             <p>Software Engineer</p>
-          <hr>
-          <dl class="clearfix">
-            <dt>Age</dt>
-            <dd>25</dd>
-            <dt>City</dt>
-            <dd>ShenZhen, China</dd>
-            <dt>Mail</dt>
-            <dd>gggshaw007@gmail.com</dd>
-            <dt>Mobile</dt>
-            <dd>1723288636</dd>
-          </dl>
+            <hr />
+            <dl class="clearfix">
+              <dt>Age</dt>
+              <dd>25</dd>
+              <dt>City</dt>
+              <dd>ShenZhen, China</dd>
+              <dt>Mail</dt>
+              <dd>gggshaw007@gmail.com</dd>
+              <dt>Mobile</dt>
+              <dd>1723288636</dd>
+            </dl>
+          </div>
         </div>
+        <footer class="media">
+          <a href="https://github.com/Shaw007134">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-github"></use>
+            </svg>
+          </a>
+          <a href="mailto:gggshaw007@gmail.com">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-gmail"></use>
+            </svg>
+          </a>
+          <a href="https://www.jianshu.com/u/b31f2307ea91">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-CN_jianshu"></use>
+            </svg>
+          </a>
+        </footer>
       </div>
-      <footer class="media">
-        <a href="https://github.com/Shaw007134">
-          <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-github"></use>
-          </svg>
-        </a>
-        <a href="mailto:gggshaw007@gmail.com">
-          <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-gmail"></use>
-          </svg>
-        </a>
-        <a href="https://www.jianshu.com/u/b31f2307ea91">
-          <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-CN_jianshu"></use>
-          </svg>
-        </a>
-      </footer>
-    </div>
-  </main>
-  <p class="downloadResume-wrapper">
-    <a href="./Resume_shengyi_zhang.pdf" target="_blank" class="downloadResume" download>Download PDF version</a>
-  </p>
-  <p class="selfIntroduction">
-    This is Shaw, graduated from USTC, aim to be a data analysis.<br>
-    Interested in data analysis, data visualization and machine learing.
-  <br>
-    I am skilled in using web crawlers, pandas to collect and analyze data, <br>
-    and also be adept in web application development, data visualization.
-  </p>
-  
-  <section data-x id="siteSkills" class="skills">
-    <h2>Professional Skills</h2>
-    <ol class="clearfix">
-        <li>
-          <h3>
-            Python
-          </h3>
-          <div class="progressBar">
-            <div class="progress" style="width:80%"></div>
-          </div>
-        </li>
-        <li>
-          <h3>
-            SQL
-          </h3>
-          <div class="progressBar">
-            <div class="progress" style="width:80%"></div>
-          </div>
-        </li>
-      <li>
-        <h3>
-          HTML 5 &amp; CSS 3
-        </h3>
-        <div class="progressBar">
-          <div class="progress" style="width:75%"></div>
-        </div>
-      </li>
-      <li>
-        <h3>
-          Javascript &amp; Vue.js
-        </h3>
-        <div class="progressBar">
-          <div class="progress" style="width:65%"></div>
-        </div>
-      </li>
-      <li>
-        <h3>
-          C &amp; Linux
-        </h3>
-        <div class="progressBar">
-          <div class="progress" style="width:70%"></div>
-        </div>
-      </li>
-      <li>
-        <h3>
-          Django &amp; Node.js
-        </h3>
-        <div class="progressBar">
-          <div class="progress" style="width:50%"></div>
-        </div>
-      </li>
-      
-    </ol>
-  </section>
+    </main>
+    <p class="downloadResume-wrapper">
+      <a
+        href="./Resume_shengyi_zhang.pdf"
+        target="_blank"
+        class="downloadResume"
+        download
+        >Download PDF version</a
+      >
+    </p>
+    <p class="selfIntroduction">
+      This is Shaw, graduated from USTC, interested in web developer & data
+      visualization.<br />
+      Familiar with Python, Javascript, Vue.js(Vuex/Vue-Router),
+      React.js(Redux/React-Router), Node.js <br />
+      and related libraries such as Antd-Mobile.<br />
+      <br />
+      I am skilled in web application development, data visualization.
+      <br />
+      and also be adept in using web crawlers, pandas to collect and analyze
+      data,
+    </p>
 
-  <section data-x id="siteWorks" class="portfolio">
-    <h2>Portfolio</h2>
-    <nav>
+    <section data-x id="siteSkills" class="skills">
+      <h2>Professional Skills</h2>
       <ol class="clearfix">
-        <li id="portfolioAll">All</li>
-        <li id="portfolioFramework">Javascript</li>
-        <li id="portfolioValina">Python</li>
+        <li>
+          <h3>
+            Javascript
+          </h3>
+          <div class="progressBar">
+            <div class="progress" style="width:90%"></div>
+          </div>
+        </li>
+        <li>
+          <h3>
+            React(Redux/React-Router) &amp; Vue(Vuex/Vue-Router)
+          </h3>
+          <div class="progressBar">
+            <div class="progress" style="width:85%"></div>
+          </div>
+        </li>
+        <li>
+          <h3>
+            HTML 5 &amp; CSS3
+          </h3>
+          <div class="progressBar">
+            <div class="progress" style="width:85%"></div>
+          </div>
+        </li>
+        <li>
+          <h3>
+            Python - Pandas &amp; Numby
+          </h3>
+          <div class="progressBar">
+            <div class="progress" style="width:60%"></div>
+          </div>
+        </li>
+        <li>
+          <h3>
+            Django &amp; Express
+          </h3>
+          <div class="progressBar">
+            <div class="progress" style="width:50%"></div>
+          </div>
+        </li>
+        <li>
+          <h3>
+            MySQL &amp; MongoDB
+          </h3>
+          <div class="progressBar">
+            <div class="progress" style="width:50%"></div>
+          </div>
+        </li>
       </ol>
-      <div id="portfolioBar" class="bar state1">
-        <div class="bar-inner"></div>
-      </div>      
-    </nav>
-    
-    <div class="works clearfix" style="height: 610px;">
-      <div class="big" id="big">
-        <a href="http://syizhang.com/Front-end/Keyboard/" border="0" target="_blank">
-          <img src="./Img/portfolio-thumb-05-610x6002.jpg" alt="作品1">
-        </a>
-      </div>
-      <div class="small_1" id="small_1">
-        <a href="http://syizhang.com/Front-end/Canvas/" border="0" target="_blank">
-          <img src="./Img/portfolio-thumb-11-289x2811.jpg" alt="作品2">
-        </a>
-      </div>
-      <div class="small_2" id="small_2">
-        <a href="http://syizhang.com/Front-end/Data_Analysis/" border="0" target="_blank">
-          <img src="./Img/portfolio-thumb-08-289x281.svg" width='289px' height='281px' alt="作品3">
-        </a>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section data-x id="contact" class="contact">
+    <section data-x id="siteWorks" class="portfolio">
+      <h2>Portfolio</h2>
+      <nav>
+        <ol class="clearfix">
+          <li id="portfolioAll">All</li>
+          <li id="portfolioFramework">Javascript</li>
+          <li id="portfolioValina">Python</li>
+        </ol>
+        <div id="portfolioBar" class="bar state1">
+          <div class="bar-inner"></div>
+        </div>
+      </nav>
+
+      <div class="works clearfix" style="height: 610px;">
+        <div class="big" id="big">
+          <a
+            href="http://syizhang.com/Front-end/Keyboard/"
+            border="0"
+            target="_blank"
+          >
+            <img src="./Img/portfolio-thumb-05-610x6002.jpg" alt="作品1" />
+          </a>
+        </div>
+        <div class="small_1" id="small_1">
+          <a
+            href="http://syizhang.com/Front-end/Canvas/"
+            border="0"
+            target="_blank"
+          >
+            <img src="./Img/portfolio-thumb-11-289x2811.jpg" alt="作品2" />
+          </a>
+        </div>
+        <div class="small_2" id="small_2">
+          <a
+            href="http://syizhang.com/Front-end/Data_Analysis/"
+            border="0"
+            target="_blank"
+          >
+            <img
+              src="./Img/portfolio-thumb-08-289x281.svg"
+              width="289px"
+              height="281px"
+              alt="作品3"
+            />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section data-x id="contact" class="contact">
       <h2>Contact me</h2>
       <div class="container">
-          <form action="action_page.php">
-        
-            <label for="fname">First Name</label>
-            <input type="text" id="fname" name="firstname" placeholder="Your name..">
-        
-            <label for="lname">Last Name</label>
-            <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-        
-            <label for="Email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Please enter your email..">
-            <!-- <select id="country" name="country">
+        <form action="action_page.php">
+          <label for="fname">First Name</label>
+          <input
+            type="text"
+            id="fname"
+            name="firstname"
+            placeholder="Your name.."
+          />
+
+          <label for="lname">Last Name</label>
+          <input
+            type="text"
+            id="lname"
+            name="lastname"
+            placeholder="Your last name.."
+          />
+
+          <label for="Email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Please enter your email.."
+          />
+          <!-- <select id="country" name="country">
               <option value="australia">Australia</option>
               <option value="canada">Canada</option>
               <option value="usa">USA</option>
             </select> -->
-        
-            <label for="subject">Subject</label>
-            <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
-        
-            <input type="submit" value="Submit">
-        
-          </form>
-        </div>
-  </section>
 
+          <label for="subject">Subject</label>
+          <textarea
+            id="subject"
+            name="subject"
+            placeholder="Write something.."
+            style="height:200px"
+          ></textarea>
 
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+    </section>
 
-  <script>
-      portfolioAll.onclick = function(){
-        portfolioBar.className = "bar state1"
+    <script>
+      portfolioAll.onclick = function() {
+        portfolioBar.className = 'bar state1'
       }
-      portfolioFramework.onclick = function(){
-        portfolioBar.className = "bar state2"
+      portfolioFramework.onclick = function() {
+        portfolioBar.className = 'bar state2'
       }
-      portfolioValina.onclick = function(){
-        portfolioBar.className = "bar state3"
-      }  
-  </script>
-  
-  <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.0/dist/av-min.js"></script>
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <script src="./main.js"></script>
-  
-  <script>
-    
-    // setTimeout(function(){
-    //   siteWelcome.classList.remove('active')
-    // },1000)
-    
-    let specialTags = document.querySelectorAll('[data-x]')
-    for(let i = 0; i<specialTags.length; i++){
-            specialTags[i].classList.add('offset')
-    }
-    findClosest()
-    window.onscroll = function(){
-      if(window.scrollY > 0){
-        topNavBar.classList.add('sticky')
-      }else{
-        topNavBar.classList.remove('sticky')
+      portfolioValina.onclick = function() {
+        portfolioBar.className = 'bar state3'
+      }
+    </script>
+
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.0/dist/av-min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="./main.js"></script>
+
+    <script>
+      // setTimeout(function(){
+      //   siteWelcome.classList.remove('active')
+      // },1000)
+
+      let specialTags = document.querySelectorAll('[data-x]')
+      for (let i = 0; i < specialTags.length; i++) {
+        specialTags[i].classList.add('offset')
       }
       findClosest()
-    }
+      window.onscroll = function() {
+        if (window.scrollY > 0) {
+          topNavBar.classList.add('sticky')
+        } else {
+          topNavBar.classList.remove('sticky')
+        }
+        findClosest()
+      }
 
-    function findClosest(){ 
-      let minIndex = 0
-      for(let i = 1; i<specialTags.length; i++){
-        if(Math.abs(specialTags[i].offsetTop-window.scrollY)<Math.abs(specialTags[minIndex].offsetTop-window.scrollY)){
-        minIndex = i
+      function findClosest() {
+        let minIndex = 0
+        for (let i = 1; i < specialTags.length; i++) {
+          if (
+            Math.abs(specialTags[i].offsetTop - window.scrollY) <
+            Math.abs(specialTags[minIndex].offsetTop - window.scrollY)
+          ) {
+            minIndex = i
+          }
+        }
+
+        specialTags[minIndex].classList.remove('offset')
+        let id = specialTags[minIndex].id
+        // console.log(id)
+        let a = document.querySelector('a[href="#' + id + '"]')
+        // console.log(a)
+        let li = a.parentNode
+        let allchild = li.parentNode.children
+        for (let i = 0; i < allchild.length; i++) {
+          allchild[i].classList.remove('highlight')
+        }
+        li.classList.add('highlight')
+      }
+
+      let liTags = document.querySelectorAll('nav.menu > ul > li')
+      for (let i = 0; i < liTags.length; i++) {
+        liTags[i].onmouseenter = function(x) {
+          x.currentTarget.classList.add('active')
+        }
+        liTags[i].onmouseleave = function(x) {
+          x.currentTarget.classList.remove('active')
         }
       }
-      
-      specialTags[minIndex].classList.remove('offset')
-      let id = specialTags[minIndex].id
-      // console.log(id)
-      let a = document.querySelector('a[href="#' + id + '"]')
-      // console.log(a)
-      let li = a.parentNode
-      let allchild = li.parentNode.children
-      for(let i=0; i<allchild.length; i++){
-        allchild[i].classList.remove('highlight')
+
+      function animate(time) {
+        requestAnimationFrame(animate)
+        TWEEN.update(time)
       }
-      li.classList.add('highlight')
-    }
+      requestAnimationFrame(animate)
 
-    let liTags = document.querySelectorAll('nav.menu > ul > li')
-    for(let i=0; i<liTags.length; i++){
-      liTags[i].onmouseenter = function(x){
-        x.currentTarget.classList.add('active')
+      let aTags = document.querySelectorAll('nav.menu > ul > li >a')
+      for (let i = 0; i < aTags.length; i++) {
+        if (aTags[i].getAttribute('href').startsWith('#')) {
+          aTags[i].onclick = function(x) {
+            x.preventDefault()
+            let top = document.querySelector(
+              x.currentTarget.getAttribute('href')
+            ).offsetTop
+            var coords = { y: window.scrollY }
+            let targetTop = top - 80
+            let s = targetTop - coords.y
+            let t1 = Math.abs((s / 100) * 300)
+            let t = t1 > 500 ? 500 : t1
+            var tween = new TWEEN.Tween(coords)
+              .to({ y: targetTop }, t)
+              .easing(TWEEN.Easing.Quadratic.Out)
+              .onUpdate(function() {
+                window.scrollTo(0, coords.y)
+              })
+              .start()
+          }
+        }
       }
-      liTags[i].onmouseleave = function(x){
-        x.currentTarget.classList.remove('active')
-      }
-    }
-
-    
-    function animate(time) {
-    requestAnimationFrame(animate);
-    TWEEN.update(time);
-    }
-    requestAnimationFrame(animate);
-
-    let aTags = document.querySelectorAll('nav.menu > ul > li >a')
-    for(let i=0; i<aTags.length; i++){
-      if(aTags[i].getAttribute('href').startsWith('#')){
-        aTags[i].onclick = function(x){
-          x.preventDefault()
-          let top = document.querySelector(x.currentTarget.getAttribute('href')).offsetTop
-          var coords = { y: window.scrollY}; 
-          let targetTop = top - 80
-          let s = targetTop - coords.y
-          let t1 = Math.abs((s/100)*300)
-          let t = t1 > 500 ? 500 : t1
-          var tween = new TWEEN.Tween(coords) 
-                  .to({ y: targetTop}, t) 
-                  .easing(TWEEN.Easing.Quadratic.Out) 
-                  .onUpdate(function() { 
-                    window.scrollTo(0,coords.y) 
-                  })
-                  .start();
-       }
-      }
-   }
-  </script>
-
-
-
- </body>
+    </script>
+  </body>
 </html>
