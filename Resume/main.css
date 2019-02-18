@@ -400,7 +400,7 @@ body main {
 }
 
 .selfIntroduction {
-  max-width: 940px;
+  /* max-width: 940px; */
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -535,17 +535,21 @@ section.portfolio nav .bar.state3 .bar-inner {
 
 .fadeOut {
   opacity: 0;
-  transition: all 0.5s;
+  transition: all 0.25s;
 }
 
 .fadeIn {
   opacity: 1;
-  transition: all 0.5s;
+  transition: all 0.25s;
 }
 
 section.portfolio .works {
   position: relative;
   margin-bottom: 100px;
+}
+
+.works img {
+  vertical-align: bottom;
 }
 
 .work {
@@ -574,27 +578,29 @@ section.portfolio .works {
 }
 
 .big {
-  position: absolute;
-  top: 0;
-  left: 0;
+  /* position: absolute; */
+  float: left;
+  /* top: 0;
+  left: 0; */
   border-radius: 1px;
   box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.35);
   transition: all 0.5s;
 }
 
 .small_1 {
-  position: absolute;
+  /* position: absolute;
   top: 0;
-  left: 625px;
+  left: 625px; */
   border-radius: 1px;
   box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.35);
   transition: all 0.5s;
 }
 
 .small_2 {
-  position: absolute;
+  /* position: absolute;
   top: 317px;
-  left: 625px;
+  left: 625px; */
+  margin-top: 10px;
   border-radius: 1px;
   box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.35);
   transition: all 0.5s;
@@ -633,4 +639,60 @@ section.portfolio .works {
 
 .height_0 {
   max-height: 0;
+}
+
+@media (max-width: 640px) {
+  #topNavBar .menu {
+    display: none;
+  }
+
+  .pictureAndText .picture {
+    float: left;
+    /* width: 261px; */
+  }
+  .pictureAndText .text {
+    float: left;
+    margin-left: 0;
+    /* width: 300px; */
+  }
+
+  .pictureAndText .text dl dt {
+    width: 20%;
+  }
+
+  #topNavBar {
+    display: none;
+  }
+
+  .banner {
+    height: 390px;
+  }
+
+  .selfIntroduction {
+    padding: 20px;
+    text-align: left;
+  }
+
+  section.portfolio .works {
+    margin-bottom: 40px;
+  }
+  section.portfolio .works .work {
+    position: initial;
+    float: initial;
+    flex-direction: column;
+    padding: 30px;
+  }
+
+  section.portfolio .works .work .desc {
+    margin-top: 10px;
+  }
+
+  section.portfolio .works .big {
+    float: initial;
+    margin-bottom: 10px;
+  }
+
+  section.portfolio .works .big img {
+    max-width: 290px;
+  }
 }
