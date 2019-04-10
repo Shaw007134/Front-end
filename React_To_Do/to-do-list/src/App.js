@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
-import Input from './Components/to-do/input/Input'
-import List from './Components/to-do/list/List'
+import Todo from './Components/to-do'
 import './App.css'
 
 class App extends Component {
- 
+  render() {
+    return (
+      <div id="App">
+        <Todo />
+      </div>
+    )
+  }
 }
 
 export default App
