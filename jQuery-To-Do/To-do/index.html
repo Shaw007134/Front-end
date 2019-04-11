@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <input type="text" name="title" id="title" />
+      <button id="submit">Submit</button>
+    </div>
+    <div>
+      <ul id="list"></ul>
+    </div>
+
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+      var $input = $('#title')
+      var $btn = $('#submit')
+      var $list = $('#list')
+      $btn.on('click', () => {
+        console.log($input.val())
+        $list.append(`<li>${$input[0].value}</li>`)
+        $input.val('')
+      })
+    </script>
+  </body>
+</html>
